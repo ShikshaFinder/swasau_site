@@ -148,7 +148,7 @@ export function HowItWorks() {
 
         {/* Connection Lines */}
         <div className="hidden lg:block relative mt-16">
-          <div className="absolute top-1/2 left-1/8 w-3/4 h-0.5 bg-gradient-to-r from-primary/20 via-secondary/20 via-primary/20 to-secondary/20 transform -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-1/8 w-3/4 h-0.5 bg-gradient-to-r from-primary/20  via-primary/20 to-secondary/20 transform -translate-y-1/2"></div>
           <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-secondary rounded-full transform -translate-x-1 -translate-y-1"></div>
           <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-primary rounded-full transform -translate-x-1 -translate-y-1"></div>
           <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-secondary rounded-full transform -translate-x-1 -translate-y-1"></div>
