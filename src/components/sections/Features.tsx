@@ -51,7 +51,7 @@ export function Features() {
     {
       icon: Zap,
       title: "Lightning-Fast Analysis",
-      description: "Sub-5 second response times for vulnerability assessment and security recommendations.",
+      description: "1-2 days for analysis",
       color: "text-primary",
     },
   ]
@@ -190,7 +190,7 @@ export function Features() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Start Free Trial
+                Join The Waitlist Now 🚀
               </motion.button>
             </div>
           </motion.div>

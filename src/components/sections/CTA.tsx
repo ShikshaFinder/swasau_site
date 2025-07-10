@@ -97,7 +97,7 @@ export function CTA() {
                 className="group relative overflow-hidden shadow-lg hover:shadow-xl bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Get Started Free
+                  Join The Waitlist Now 🚀
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <motion.div
@@ -148,7 +148,7 @@ export function CTA() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Lightning Fast</h3>
-                  <p className="text-sm text-muted-foreground">Results in under 5 seconds</p>
+                  <p className="text-sm text-muted-foreground">Results in 1-2 days</p>
                 </div>
               </motion.div>
 
@@ -178,10 +178,10 @@ export function CTA() {
                 Trusted by security teams at:
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                <div className="text-lg font-semibold text-foreground">TechCorp</div>
-                <div className="text-lg font-semibold text-foreground">CyberDefense Inc</div>
-                <div className="text-lg font-semibold text-foreground">GlobalBank</div>
-                <div className="text-lg font-semibold text-foreground">SecureNet</div>
+                <div className="text-lg font-semibold text-foreground">GWSF Ventures Pvt. Ltd.</div>
+                {/* <div className="text-lg font-semibold text-foreground">CyberDefense Inc</div>
+                <div className="text-lg font-semibold text-foreground"></div>
+                <div className="text-lg font-semibold text-foreground"></div> */} 
               </div>
             </motion.div>
           </div>

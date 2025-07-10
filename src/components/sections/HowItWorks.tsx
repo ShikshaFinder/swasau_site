@@ -39,7 +39,7 @@ export function HowItWorks() {
       icon: Shield,
       title: "Instant Results",
       description:
-        "AI agent responds with detailed vulnerability reports, security insights, and actionable recommendations in under 5 seconds.",
+        "AI agent responds with detailed vulnerability reports, security insights, and actionable recommendations in under 1-2 days.",
       color: "text-secondary",
       bgColor: "bg-secondary/10",
       delay: 0.8,

@@ -243,7 +243,7 @@ export function Pricing() {
                       }`}
                       size="lg"
                     >
-                      {plan.price === 0 ? 'Get Started Free' : 'Choose Plan'}
+                      {plan.price === 0 ? 'Join The Waitlist Now 🚀' : 'Choose Plan'}
                     </Button>
                   </CardContent>
                 </Card>

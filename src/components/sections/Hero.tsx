@@ -8,7 +8,7 @@ import { Shield, Zap, Cpu, Lock } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-16 md:pt-20">
       {/* Subtle Aurora Background */}
       <div className="absolute inset-0 aurora opacity-30"></div>
 
@@ -56,21 +56,21 @@ export function Hero() {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <ScrollReveal delay={0.2}>
-          <motion.div
+        {/* <ScrollReveal delay={0.2}>
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="mb-6"
           >
-            <span className="inline-block px-4 py-2 bg-secondary/10 text-secondary-foreground rounded-full text-sm font-medium mb-4 border border-secondary/20">
+            {/* <span className="inline-block px-4 py-2 bg-secondary/10 text-secondary-foreground rounded-full text-sm font-medium mb-4 border border-secondary/20">
               🛡️ AI-Powered Cybersecurity Automation
-            </span>
-          </motion.div>
-        </ScrollReveal>
+            </span> */}
+        {/* </motion.div> */}
+        {/* </ScrollReveal>  */}
 
         <ScrollReveal delay={0.4}>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground ">
             Secure Your Digital{" "}
             <GradientText className="block">Frontier with AI</GradientText>
           </h1>
@@ -90,7 +90,7 @@ export function Hero() {
               size="xl"
               className="group relative overflow-hidden shadow-lg hover:shadow-xl"
             >
-              <span className="relative z-10">Get Started Free</span>
+              <span className="relative z-10">Join The Waitlist Now 🚀</span>
               <motion.div
                 className="absolute inset-0 bg-white/20"
                 initial={{ x: "-100%" }}
@@ -119,9 +119,11 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Shield className="w-8 h-8 text-primary" />
               </div>
-              <div className="text-2xl font-bold text-primary">10,000+</div>
+              <div className="text-2xl font-bold text-primary">
+                State-of-the-Art
+              </div>
               <div className="text-sm text-muted-foreground">
-                Vulnerabilities Found
+                LLMs & Multi-Agent System
               </div>
             </motion.div>
 
@@ -133,8 +135,12 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Zap className="w-8 h-8 text-secondary" />
               </div>
-              <div className="text-2xl font-bold text-secondary">&lt;5s</div>
-              <div className="text-sm text-muted-foreground">Response Time</div>
+              <div className="text-2xl font-bold text-secondary">
+                Kali Linux
+              </div>
+              <div className="text-sm text-muted-foreground">
+                + Virtual Machine
+              </div>
             </motion.div>
 
             <motion.div
@@ -145,9 +151,9 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Cpu className="w-8 h-8 text-primary" />
               </div>
-              <div className="text-2xl font-bold text-primary">500+</div>
+              <div className="text-2xl font-bold text-primary">CSRF, XSS</div>
               <div className="text-sm text-muted-foreground">
-                Security Teams
+                & Other Vulnerabilities
               </div>
             </motion.div>
 
@@ -159,8 +165,8 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Lock className="w-8 h-8 text-secondary" />
               </div>
-              <div className="text-2xl font-bold text-secondary">99.9%</div>
-              <div className="text-sm text-muted-foreground">Uptime</div>
+              <div className="text-2xl font-bold text-secondary">&lt; 1 day</div>
+              <div className="text-sm text-muted-foreground">Analysis Time</div>
             </motion.div>
           </div>
         </ScrollReveal>

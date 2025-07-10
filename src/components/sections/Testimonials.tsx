@@ -9,41 +9,14 @@ import { useState, useEffect } from "react";
 export function Testimonials() {
   const testimonials = [
     {
-      name: "Sarah Chen",
-      role: "Senior Security Analyst",
-      location: "San Francisco",
-      content: "aicybershield.tech has revolutionized our bug bounty program. The AI-powered analysis catches vulnerabilities we would have missed, and the 5-second response time is incredible.",
+      name: "Harsh Jani",
+      role: "Full Stack Developer",
+      location: "India",
+      content: "aicybershield.tech has revolutionized our bug bounty program. The AI-powered analysis catches vulnerabilities we would have missed and the 1-2 days response time is incredible.",
       rating: 5,
-      avatar: "SC",
-      company: "TechCorp Security",
-    },
-    {
-      name: "Marcus Rodriguez",
-      role: "Red Team Lead",
-      location: "Austin",
-      content: "The browser extension integration is seamless, and the Kubernetes scaling handles our enterprise workload perfectly. This is exactly what modern security teams need.",
-      rating: 5,
-      avatar: "MR",
-      company: "CyberDefense Inc",
-    },
-    {
-      name: "Alex Thompson",
-      role: "Bug Bounty Hunter",
-      location: "London",
-      content: "As a solo researcher, this platform gives me enterprise-grade tools. The AI agent's analysis is spot-on and has helped me find critical vulnerabilities faster than ever.",
-      rating: 5,
-      avatar: "AT",
-      company: "Independent Researcher",
-    },
-    {
-      name: "Dr. Priya Patel",
-      role: "CISO",
-      location: "New York",
-      content: "The automation capabilities have transformed our DevSecOps pipeline. We're finding and fixing vulnerabilities before they reach production, saving us millions in potential breaches.",
-      rating: 5,
-      avatar: "PP",
-      company: "GlobalBank Security",
-    },
+      avatar: "HJ",
+      company: "GWSF Ventures Pvt. Ltd.",
+    }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -210,7 +183,7 @@ export function Testimonials() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-3xl font-bold text-primary mb-2">500+</div>
+              <div className="text-3xl font-bold text-primary mb-2">5+</div>
               <div className="text-sm text-muted-foreground">Security Teams</div>
             </motion.div>
             
@@ -237,7 +210,7 @@ export function Testimonials() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-3xl font-bold text-secondary mb-2">&lt;5s</div>
+              <div className="text-3xl font-bold text-secondary mb-2">&lt;2 days</div>
               <div className="text-sm text-muted-foreground">Response Time</div>
             </motion.div>
           </div>

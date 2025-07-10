@@ -77,7 +77,7 @@ export function Navbar() {
             </Button>
             <Button className="group relative overflow-hidden">
               <span className="relative z-10 flex items-center gap-2">
-                Get Started Free
+                Join The Waitlist Now 🚀
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
               <motion.div
@@ -111,9 +111,9 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-white/95 backdrop-blur-md border-t border-border shadow-lg"
             >
-              <div className="py-4 space-y-4 border-t border-border">
+              <div className="py-4 space-y-4 px-4">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={index}
@@ -136,7 +136,7 @@ export function Navbar() {
                   </Button>
                   <Button className="w-full group relative overflow-hidden">
                     <span className="relative z-10 flex items-center gap-2">
-                      Get Started Free
+                      Join The Waitlist Now 🚀
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                     <motion.div
