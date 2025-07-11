@@ -14,8 +14,7 @@
             "source": "/:path*",
             "has": [
                 {
-                    "type": "missing",
-                    "missing": true
+                    "type": "missing"
                 }
             ],
             "destination": "/",
