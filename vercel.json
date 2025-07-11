@@ -6,6 +6,11 @@
             "permanent": false
         },
         {
+            "source": "/lander",
+            "destination": "/",
+            "permanent": false
+        },
+        {
             "source": "/:path*",
             "has": [
                 {
