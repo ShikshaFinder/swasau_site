@@ -6,12 +6,14 @@ import { Pricing } from "@/components/sections/Pricing";
 import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
 import { Navbar } from "@/components/Navbar";
+import FileUpload from "@/components/FileUpload";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
       <Hero />
+      <FileUpload />
       <HowItWorks />
       <Features />
       <Testimonials />
