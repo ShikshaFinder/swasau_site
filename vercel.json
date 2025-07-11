@@ -1,0 +1,20 @@
+{
+    "redirects": [
+        {
+            "source": "/lender",
+            "destination": "/",
+            "permanent": false
+        },
+        {
+            "source": "/:path*",
+            "has": [
+                {
+                    "type": "missing",
+                    "missing": true
+                }
+            ],
+            "destination": "/",
+            "permanent": false
+        }
+    ]
+}
