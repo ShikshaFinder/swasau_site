@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ScrollReveal } from "@/components/animations/ScrollReveal"
-import { Shield, Zap, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { Shield, Zap, ArrowRight } from "lucide-react";
 
 export function CTA() {
   return (
@@ -20,7 +20,7 @@ export function CTA() {
             `,
           }}
         />
-        
+
         {/* Floating Elements */}
         <motion.div
           className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl"
@@ -72,7 +72,7 @@ export function CTA() {
               className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground"
             >
               Start Your{" "}
-              <span className="gradient-text">AI-Powered Security</span>{" "}
+              <span className="gradient-text">Easy & Smart Protection</span>{" "}
               Journey Today
             </motion.h2>
 
@@ -82,8 +82,8 @@ export function CTA() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
             >
-              Join hundreds of security teams who have already automated their 
-              bug bounty and pentesting workflows. Get started in minutes, not months.
+              Try our simple tool to keep your websites and apps safe. No tech
+              skills needed—just easy, smart protection for everyone.
             </motion.p>
 
             <motion.div
@@ -107,7 +107,7 @@ export function CTA() {
                   transition={{ duration: 0.6 }}
                 />
               </Button>
-              
+
               <Button
                 variant="outline"
                 size="xl"
@@ -134,7 +134,9 @@ export function CTA() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Zero Setup</h3>
-                  <p className="text-sm text-muted-foreground">Get started in under 5 minutes</p>
+                  <p className="text-sm text-muted-foreground">
+                    Get started in under 5 minutes
+                  </p>
                 </div>
               </motion.div>
 
@@ -147,8 +149,12 @@ export function CTA() {
                   <Zap className="w-6 h-6 text-secondary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Lightning Fast</h3>
-                  <p className="text-sm text-muted-foreground">Results in 1-2 days</p>
+                  <h3 className="font-semibold text-foreground">
+                    Lightning Fast
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Results in 1-2 days
+                  </p>
                 </div>
               </motion.div>
 
@@ -161,8 +167,12 @@ export function CTA() {
                   <Shield className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Enterprise Ready</h3>
-                  <p className="text-sm text-muted-foreground">Scale to any team size</p>
+                  <h3 className="font-semibold text-foreground">
+                    Enterprise Ready
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Scale to any team size
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
@@ -178,15 +188,17 @@ export function CTA() {
                 Trusted by security teams at:
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                <div className="text-lg font-semibold text-foreground">GWSF Ventures Pvt. Ltd.</div>
+                <div className="text-lg font-semibold text-foreground">
+                  GWSF Ventures Pvt. Ltd.
+                </div>
                 {/* <div className="text-lg font-semibold text-foreground">CyberDefense Inc</div>
                 <div className="text-lg font-semibold text-foreground"></div>
-                <div className="text-lg font-semibold text-foreground"></div> */} 
+                <div className="text-lg font-semibold text-foreground"></div> */}
               </div>
             </motion.div>
           </div>
         </ScrollReveal>
       </div>
     </section>
-  )
+  );
 }

@@ -10,36 +10,36 @@ export function HowItWorks() {
   const steps = [
     {
       icon: Chrome,
-      title: "Browser Extension Capture",
+      title: "Tell Us What You Need",
       description:
-        "Intelligently captures network requests and authentication tokens when triggered, filtering out unnecessary data like images or fonts.",
+        "Just let us know what you want to check or protect. No tech talk needed!",
       color: "text-primary",
       bgColor: "bg-primary/10",
       delay: 0.2,
     },
     {
       icon: Server,
-      title: "Secure API Transmission",
+      title: "We Pick the Best Tools",
       description:
-        "Communicates with central API using encrypted channels, implementing CORS protection and replay prevention for secure data transfer.",
+        "Our smart helper chooses the right ways to check your website or app, so you don’t have to worry about it.",
       color: "text-secondary",
       bgColor: "bg-secondary/10",
       delay: 0.4,
     },
     {
       icon: Cpu,
-      title: "AI Agent Analysis",
+      title: "We Do All the Work",
       description:
-        "Kubernetes spins up isolated pods running containerized AI security agents that analyze network data for vulnerabilities and misconfigurations.",
+        "The tool checks everything for you, looking for any problems or weak spots, while you relax.",
       color: "text-primary",
       bgColor: "bg-primary/10",
       delay: 0.6,
     },
     {
       icon: Shield,
-      title: "Instant Results",
+      title: "Get Simple Results",
       description:
-        "AI agent responds with detailed vulnerability reports, security insights, and actionable recommendations in under 1-2 days.",
+        "You get an easy-to-read report with what we found and tips to stay safe. No confusing words!",
       color: "text-secondary",
       bgColor: "bg-secondary/10",
       delay: 0.8,

@@ -71,16 +71,19 @@ export function Hero() {
 
         <ScrollReveal delay={0.4}>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground ">
-            Secure Your Digital{" "}
-            <GradientText className="block">Frontier with AI</GradientText>
+            Your Smart Cybersecurity Helper
+            <GradientText className="block">
+              Easy, Fast, and Powerful
+            </GradientText>
           </h1>
         </ScrollReveal>
 
         <ScrollReveal delay={0.6}>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Streamline bug bounty and pentesting workflows with AI-powered
-            browser extension and scalable Kubernetes backend. Lightning-fast
-            reconnaissance from browser to pod in seconds.
+            Our tool is like having a super-smart assistant that checks your
+            websites and apps for problems and keeps them safe. You don’t need
+            to be a tech expert—just let it do the hard work for you, quickly
+            and easily.
           </p>
         </ScrollReveal>
 
@@ -119,11 +122,9 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Shield className="w-8 h-8 text-primary" />
               </div>
-              <div className="text-2xl font-bold text-primary">
-                State-of-the-Art
-              </div>
+              <div className="text-2xl font-bold text-primary">Easy to Use</div>
               <div className="text-sm text-muted-foreground">
-                LLMs & Multi-Agent System
+                No tech skills needed
               </div>
             </motion.div>
 
@@ -136,10 +137,10 @@ export function Hero() {
                 <Zap className="w-8 h-8 text-secondary" />
               </div>
               <div className="text-2xl font-bold text-secondary">
-                Kali Linux
+                Super Fast
               </div>
               <div className="text-sm text-muted-foreground">
-                + Virtual Machine
+                Checks everything quickly
               </div>
             </motion.div>
 
@@ -151,9 +152,11 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Cpu className="w-8 h-8 text-primary" />
               </div>
-              <div className="text-2xl font-bold text-primary">CSRF, XSS</div>
+              <div className="text-2xl font-bold text-primary">
+                Smart & Helpful
+              </div>
               <div className="text-sm text-muted-foreground">
-                & Other Vulnerabilities
+                Finds problems for you
               </div>
             </motion.div>
 
@@ -165,8 +168,12 @@ export function Hero() {
               <div className="flex justify-center mb-2">
                 <Lock className="w-8 h-8 text-secondary" />
               </div>
-              <div className="text-2xl font-bold text-secondary">&lt; 1 day</div>
-              <div className="text-sm text-muted-foreground">Analysis Time</div>
+              <div className="text-2xl font-bold text-secondary">
+                Always Working
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Keeps you safe all the time
+              </div>
             </motion.div>
           </div>
         </ScrollReveal>

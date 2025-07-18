@@ -2,59 +2,69 @@
 
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Chrome, Zap, Shield, Cpu, Lock, Database, Network, Bot } from "lucide-react";
+import {
+  Chrome,
+  Zap,
+  Shield,
+  Cpu,
+  Lock,
+  Database,
+  Network,
+  Bot,
+} from "lucide-react";
 
 export function Features() {
   const features = [
     {
-      icon: Chrome,
-      title: "Smart Browser Extension",
-      description: "Manifest V3 extension with chrome.webRequest API for intelligent network capture and token extraction.",
-      color: "text-secondary",
-    },
-    {
-      icon: Shield,
-      title: "Zero-Day Detection",
-      description: "AI-powered analysis identifies unknown vulnerabilities and zero-day exploits in real-time.",
+      icon: Bot,
+      title: "Easy for Everyone",
+      description: "You don’t need to be a tech expert. Anyone can use it!",
       color: "text-primary",
     },
     {
+      icon: Zap,
+      title: "Fast Checks",
+      description: "Finds problems quickly so you can fix them sooner.",
+      color: "text-secondary",
+    },
+    {
       icon: Cpu,
-      title: "Kubernetes Auto-Scaling",
-      description: "Horizontal pod autoscaling ensures enterprise-grade performance for large-scale security assessments.",
+      title: "Smart Helper",
+      description: "Understands what you need and does the hard work for you.",
+      color: "text-primary",
+    },
+    {
+      icon: Shield,
+      title: "Keeps You Safe",
+      description: "Watches out for dangers and helps protect your stuff.",
       color: "text-secondary",
     },
     {
       icon: Lock,
-      title: "End-to-End Encryption",
-      description: "Military-grade encryption for all data transmission with CORS protection and replay prevention.",
+      title: "Always On",
+      description: "Works in the background to keep you safe all the time.",
       color: "text-primary",
-    },
-    {
-      icon: Bot,
-      title: "AI Security Agent",
-      description: "Containerized AI agents analyze headers, tokens, endpoints, and payloads for comprehensive security insights.",
-      color: "text-secondary",
     },
     {
       icon: Database,
-      title: "Vulnerability Database",
-      description: "Comprehensive database of known vulnerabilities with real-time updates and threat intelligence.",
-      color: "text-primary",
-    },
-    {
-      icon: Network,
-      title: "Multi-Node Deployment",
-      description: "Support for SSH forwarding and hybrid edge-Kali setups for distributed security operations.",
+      title: "Learns and Improves",
+      description:
+        "Gets better every time you use it, so you’re always protected.",
       color: "text-secondary",
     },
     {
-      icon: Zap,
-      title: "Lightning-Fast Analysis",
-      description: "1-2 days for analysis",
+      icon: Network,
+      title: "Works for Everyone",
+      description: "Great for individuals, families, or teams.",
       color: "text-primary",
     },
-  ]
+    {
+      icon: Chrome,
+      title: "No Extra Steps",
+      description: "Just start and let it handle everything for you.",
+      color: "text-secondary",
+    },
+  ];
 
   return (
     <section className="py-20 relative overflow-hidden bg-white">
@@ -116,25 +126,25 @@ export function Features() {
                 Advanced Security Features
               </span>
             </motion.div>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
             >
-              Enterprise-Grade{" "}
-              <span className="gradient-text">Security Automation</span>
+              Simple, Powerful Protection
+              <span className="gradient-text"> For Everyone</span>
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl text-muted-foreground max-w-3xl mx-auto"
             >
-              Our platform combines cutting-edge AI technology with scalable infrastructure 
-              to provide comprehensive security assessment and vulnerability discovery.
+              Our tool is made for everyone. It’s easy, fast, and keeps you
+              safe—no tech skills needed.
             </motion.p>
           </div>
         </ScrollReveal>
@@ -144,23 +154,26 @@ export function Features() {
             <ScrollReveal key={index} delay={index * 0.1}>
               <motion.div
                 className="group p-6 rounded-2xl bg-white border border-border shadow-sm hover:shadow-lg transition-all duration-300"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   y: -5,
                 }}
                 transition={{ duration: 0.3 }}
               >
                 <motion.div
-                  className={`w-12 h-12 ${feature.color.replace('text-', 'bg-')}/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-current/10`}
+                  className={`w-12 h-12 ${feature.color.replace(
+                    "text-",
+                    "bg-"
+                  )}/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-current/10`}
                   whileHover={{ rotate: 5 }}
                 >
                   <feature.icon className={`w-6 h-6 ${feature.color}`} />
                 </motion.div>
-                
+
                 <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300 text-foreground">
                   {feature.title}
                 </h3>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
@@ -182,8 +195,9 @@ export function Features() {
                 Ready to Automate Your Security Workflow?
               </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl">
-                Join hundreds of security teams who have already transformed their 
-                bug bounty and pentesting operations with AI-powered automation.
+                Join hundreds of security teams who have already transformed
+                their bug bounty and pentesting operations with AI-powered
+                automation.
               </p>
               <motion.button
                 className="px-8 py-3 bg-primary text-white rounded-2xl font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl"
@@ -197,5 +211,5 @@ export function Features() {
         </ScrollReveal>
       </div>
     </section>
-  )
+  );
 }
