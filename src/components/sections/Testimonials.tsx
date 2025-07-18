@@ -12,11 +12,12 @@ export function Testimonials() {
       name: "Harsh Jani",
       role: "Full Stack Developer",
       location: "India",
-      content: "aicybershield.tech has revolutionized our bug bounty program. The AI-powered analysis catches vulnerabilities we would have missed and the 1-2 days response time is incredible.",
+      content:
+        "aicybershield.tech has revolutionized our bug bounty program. The AI-powered analysis catches vulnerabilities we would have missed and the 1-2 days response time is incredible.",
       rating: 5,
       avatar: "HJ",
       company: "GWSF Ventures Pvt. Ltd.",
-    }
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,25 +73,25 @@ export function Testimonials() {
                 Security Team Success Stories
               </span>
             </motion.div>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
             >
-              What Our{" "}
-              <span className="gradient-text">Security Teams Say</span>
+              What Our <span className="gradient-text">Security Teams Say</span>
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl text-muted-foreground max-w-3xl mx-auto"
             >
-              Real stories from security professionals who have transformed their 
-              operations with AI-powered automation and lightning-fast vulnerability assessment.
+              Real stories from security professionals who have transformed
+              their operations with AI-powered automation and lightning-fast
+              vulnerability assessment.
             </motion.p>
           </div>
         </ScrollReveal>
@@ -115,38 +116,40 @@ export function Testimonials() {
                   >
                     {testimonials[currentIndex].avatar}
                   </motion.div>
-                  
+
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-4">
-                      {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: i * 0.1 }}
-                        >
-                          <Star className="w-5 h-5 fill-secondary text-secondary" />
-                        </motion.div>
-                      ))}
+                      {[...Array(testimonials[currentIndex].rating)].map(
+                        (_, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                          >
+                            <Star className="w-5 h-5 fill-secondary text-secondary" />
+                          </motion.div>
+                        )
+                      )}
                     </div>
-                    
+
                     <motion.blockquote
                       className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed relative"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <Quote className="w-8 h-8 text-primary/30 absolute -top-2 -left-2" />
                       "{testimonials[currentIndex].content}"
                     </motion.blockquote>
-                    
+
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-semibold text-lg text-foreground">
                           {testimonials[currentIndex].name}
                         </h4>
                         <p className="text-muted-foreground">
-                          {testimonials[currentIndex].role} • {testimonials[currentIndex].location}
+                          {testimonials[currentIndex].role} •{" "}
+                          {testimonials[currentIndex].location}
                         </p>
                         <p className="text-sm text-primary font-medium">
                           {testimonials[currentIndex].company}
@@ -165,7 +168,7 @@ export function Testimonials() {
               <motion.button
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-primary' : 'bg-primary/30'
+                  index === currentIndex ? "bg-primary" : "bg-primary/30"
                 }`}
                 onClick={() => setCurrentIndex(index)}
                 whileHover={{ scale: 1.2 }}
@@ -184,18 +187,24 @@ export function Testimonials() {
               transition={{ duration: 0.2 }}
             >
               <div className="text-3xl font-bold text-primary mb-2">5+</div>
-              <div className="text-sm text-muted-foreground">Security Teams</div>
+              <div className="text-sm text-muted-foreground">
+                Security Teams
+              </div>
             </motion.div>
-            
+
             <motion.div
               className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-3xl font-bold text-secondary mb-2">4.9/5</div>
-              <div className="text-sm text-muted-foreground">Average Rating</div>
+              <div className="text-3xl font-bold text-secondary mb-2">
+                4.9/5
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Average Rating
+              </div>
             </motion.div>
-            
+
             <motion.div
               className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
               whileHover={{ scale: 1.05 }}
@@ -204,13 +213,15 @@ export function Testimonials() {
               <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
               <div className="text-sm text-muted-foreground">Uptime</div>
             </motion.div>
-            
+
             <motion.div
               className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-3xl font-bold text-secondary mb-2">&lt;2 days</div>
+              <div className="text-3xl font-bold text-secondary mb-2">
+                &lt;2 days
+              </div>
               <div className="text-sm text-muted-foreground">Response Time</div>
             </motion.div>
           </div>

@@ -153,12 +153,13 @@ export function Hero() {
                 <Cpu className="w-8 h-8 text-primary" />
               </div>
               <div className="text-2xl font-bold text-primary">
-                Smart & Helpful
+                Powered by Best LLMs
               </div>
               <div className="text-sm text-muted-foreground">
-                Finds problems for you
+                and Kali Linux
               </div>
             </motion.div>
+
 
             <motion.div
               className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
@@ -169,10 +170,10 @@ export function Hero() {
                 <Lock className="w-8 h-8 text-secondary" />
               </div>
               <div className="text-2xl font-bold text-secondary">
-                Always Working
+                Smart & Helpful
               </div>
               <div className="text-sm text-muted-foreground">
-                Keeps you safe all the time
+                Keeps your sites safe
               </div>
             </motion.div>
           </div>

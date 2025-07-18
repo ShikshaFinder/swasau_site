@@ -1,21 +1,20 @@
-'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 function page() {
+  const router = useRouter();
 
-    const router = useRouter();
-
-    useEffect(() => {
-        router.push('/');
-    }, []);
+  useEffect(() => {
+    router.push("/");
+  }, []);
 
   return (
     <div>
       <h1>Lander</h1>
     </div>
-  )
+  );
 }
 
-export default page
+export default page;

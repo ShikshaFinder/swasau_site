@@ -35,13 +35,13 @@ export function Features() {
     },
     {
       icon: Shield,
-      title: "Keeps You Safe",
+      title: "Keeps Your Sites Safe",
       description: "Watches out for dangers and helps protect your stuff.",
       color: "text-secondary",
     },
     {
       icon: Lock,
-      title: "Always On",
+      title: "Always ready to help",
       description: "Works in the background to keep you safe all the time.",
       color: "text-primary",
     },
@@ -55,7 +55,7 @@ export function Features() {
     {
       icon: Network,
       title: "Works for Everyone",
-      description: "Great for individuals, families, or teams.",
+      description: "Great for companies, pentesters, and developers.",
       color: "text-primary",
     },
     {
