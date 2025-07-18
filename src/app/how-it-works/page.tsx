@@ -575,7 +575,7 @@ export default function HowItWorksPage() {
                 <span className="text-base text-muted-foreground">
                   Support APK reverse engineering
                 </span>
-              </li>
+              </li> 
               <li className="flex items-center">
                 <span className="text-blue-500 mr-2">📊</span>
                 <span className="text-base text-muted-foreground">
