@@ -12,23 +12,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       {/* Navigation links for auth pages */}
-      <nav className="w-full flex justify-end gap-4 p-4">
-        <Link href="/auth/signup" className="text-primary hover:underline">
-          Sign Up
-        </Link>
-        <Link href="/auth/login" className="text-primary hover:underline">
-          Login
-        </Link>
-        {/* <Link
-          href="/verify-email?token=demo"
-          className="text-primary hover:underline"
-        >
-          Verify Email (Demo)
-        </Link> */}
-        <Link href="/waitlist" className="text-primary hover:underline">
-          Join Waitlist
-        </Link>
-      </nav>
       <Hero />
       {/* CSAI Agent Purpose and Workflow Summary */}
       <section className="container mx-auto px-4 py-8 text-center">
