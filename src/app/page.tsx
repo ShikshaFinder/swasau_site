@@ -11,6 +11,26 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
+      <nav className="w-full flex justify-end gap-4 p-4">
+        <Link href="/auth/signup" className="text-primary hover:underline">
+          Sign Up
+        </Link>
+        <Link href="/auth/login" className="text-primary hover:underline">
+          Login
+        </Link>
+        <Link href="/dashboard" className="text-primary hover:underline">
+          Dashboard
+        </Link>
+        {/* <Link
+          href="/verify-email?token=demo"
+          className="text-primary hover:underline"
+        >
+          Verify Email (Demo)
+        </Link> */}
+        <Link href="/waitlist" className="text-primary hover:underline">
+          Join Waitlist
+        </Link>
+      </nav>
       {/* Navigation links for auth pages */}
       <Hero />
       {/* CSAI Agent Purpose and Workflow Summary */}

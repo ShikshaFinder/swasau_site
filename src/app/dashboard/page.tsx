@@ -1,201 +1,246 @@
 "use client";
-import Height from "@/components/height";
-import { motion } from "framer-motion";
-import { Shield, Zap, Target, FileText, LogOut } from "lucide-react";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
-export default function DashboardPage() {
-  const handleLogout = () => {
-    // TODO: Implement logout logic
-    console.log("Logging out...");
-    window.location.href = "/";
+interface Request {
+  id: number;
+  url: string;
+  method: string;
+  headers: any;
+  body: string | null;
+  timestamp: string;
+  status: string;
+  analysis?: {
+    id: number;
+    result: any;
+    status: string;
+    createdAt: string;
+    completedAt: string | null;
   };
+}
 
-  const stats = [
-    {
-      title: "Total Scans",
-      value: "24",
-      icon: Shield,
-      color: "text-primary",
-      bgColor: "bg-primary/10",
-    },
-    {
-      title: "Vulnerabilities Found",
-      value: "7",
-      icon: Target,
-      color: "text-red-500",
-      bgColor: "bg-red-500/10",
-    },
-    {
-      title: "Active Projects",
-      value: "3",
-      icon: FileText,
-      color: "text-secondary",
-      bgColor: "bg-secondary/10",
-    },
-    {
-      title: "Scans This Week",
-      value: "12",
-      icon: Zap,
-      color: "text-green-500",
-      bgColor: "bg-green-500/10",
-    },
-  ];
+interface ApiToken {
+  id: number;
+  token: string;
+  name: string;
+  createdAt: string;
+  lastUsed: string | null;
+}
+
+export default function Dashboard() {
+  const [requests, setRequests] = useState<Request[]>([]);
+  const [apiToken, setApiToken] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [tokenLoading, setTokenLoading] = useState(false);
+  const [showToken, setShowToken] = useState(false);
+
+  // Mock authentication - in real app, get from session/cookies
+  const [user, setUser] = useState({
+    email: "demo@example.com",
+    name: "Demo User",
+  });
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
+
+  async function fetchRequests() {
+    try {
+      // In real app, get token from session
+      const token = localStorage.getItem("apiToken");
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
+      const response = await fetch("/api/requests", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setRequests(data.requests);
+      }
+    } catch (error) {
+      console.error("Error fetching requests:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function generateToken() {
+    setTokenLoading(true);
+    try {
+      // In real app, use actual user credentials from session
+      const response = await fetch("/api/auth/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: user.email,
+          password: "demo-password", // In real app, get from secure session
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setApiToken(data.token);
+        localStorage.setItem("apiToken", data.token);
+        setShowToken(true);
+      }
+    } catch (error) {
+      console.error("Error generating token:", error);
+    } finally {
+      setTokenLoading(false);
+    }
+  }
+
+  function copyToken() {
+    navigator.clipboard.writeText(apiToken);
+    alert("Token copied to clipboard!");
+  }
 
   return (
-    <>
-    <Height/>
-    <div className="min-h-screen bg-gradient-to-br from-white to-slate-100">
-      {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm border-b border-border shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-foreground">
-                AICyberShield Dashboard
-              </span>
-            </div>
-            <Button
-              onClick={handleLogout}
-              variant="ghost"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
-          </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
+          <p className="text-gray-600">Welcome back, {user.name}!</p>
         </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        {/* Welcome Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Welcome back!
-          </h1>
-          <p className="text-muted-foreground">
-            Here's what's happening with your security scans.
+        {/* API Token Section */}
+        <Card className="p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">
+            Browser Extension Setup
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Generate an API token to connect your browser extension and start
+            capturing requests.
           </p>
-        </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-border"
+          {!showToken ? (
+            <Button
+              onClick={generateToken}
+              disabled={tokenLoading}
+              className="bg-primary hover:bg-primary/80"
             >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">
-                    {stat.title}
-                  </p>
-                  <p className="text-3xl font-bold text-foreground">
-                    {stat.value}
-                  </p>
-                </div>
+              {tokenLoading ? "Generating..." : "Generate API Token"}
+            </Button>
+          ) : (
+            <div className="space-y-4">
+              <div className="bg-gray-100 p-4 rounded-lg">
+                <p className="text-sm text-gray-600 mb-2">Your API Token:</p>
+                <code className="text-sm bg-white p-2 rounded border break-all">
+                  {apiToken}
+                </code>
+              </div>
+              <div className="flex gap-2">
+                <Button onClick={copyToken} variant="outline">
+                  Copy Token
+                </Button>
+                <Button onClick={() => setShowToken(false)} variant="outline">
+                  Generate New Token
+                </Button>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <p className="text-sm text-blue-800">
+                  <strong>Extension Setup Instructions:</strong>
+                </p>
+                <ol className="text-sm text-blue-700 mt-2 list-decimal list-inside space-y-1">
+                  <li>Copy the API token above</li>
+                  <li>Open your browser extension settings</li>
+                  <li>Paste the token in the authentication field</li>
+                  <li>Start capturing requests on your target website</li>
+                  <li>View captured requests below</li>
+                </ol>
+              </div>
+            </div>
+          )}
+        </Card>
+
+        {/* Requests Section */}
+        <Card className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold">Captured Requests</h2>
+            <Button onClick={fetchRequests} variant="outline">
+              Refresh
+            </Button>
+          </div>
+
+          {loading ? (
+            <div className="text-center py-8">
+              <p className="text-gray-600">Loading requests...</p>
+            </div>
+          ) : requests.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-gray-600">No requests captured yet.</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Set up your browser extension and start browsing to capture
+                requests.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {requests.map((request) => (
                 <div
-                  className={`w-12 h-12 ${stat.bgColor} rounded-xl flex items-center justify-center`}
+                  key={request.id}
+                  className="border rounded-lg p-4 bg-white"
                 >
-                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`px-2 py-1 rounded text-xs font-medium ${
+                          request.method === "GET"
+                            ? "bg-green-100 text-green-800"
+                            : request.method === "POST"
+                            ? "bg-blue-100 text-blue-800"
+                            : "bg-gray-100 text-gray-800"
+                        }`}
+                      >
+                        {request.method}
+                      </span>
+                      <span className="text-sm text-gray-600">
+                        {new Date(request.timestamp).toLocaleString()}
+                      </span>
+                    </div>
+                    <span
+                      className={`px-2 py-1 rounded text-xs font-medium ${
+                        request.status === "completed"
+                          ? "bg-green-100 text-green-800"
+                          : request.status === "processing"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-gray-100 text-gray-800"
+                      }`}
+                    >
+                      {request.status}
+                    </span>
+                  </div>
+
+                  <p className="text-sm font-medium text-gray-900 mb-2 truncate">
+                    {request.url}
+                  </p>
+
+                  {request.analysis && (
+                    <div className="mt-3 p-3 bg-gray-50 rounded">
+                      <p className="text-sm font-medium text-gray-700 mb-1">
+                        Analysis Status: {request.analysis.status}
+                      </p>
+                      {request.analysis.status === "completed" && (
+                        <pre className="text-xs text-gray-600 overflow-auto">
+                          {JSON.stringify(request.analysis.result, null, 2)}
+                        </pre>
+                      )}
+                    </div>
+                  )}
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-border"
-        >
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            Quick Actions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button className="h-16 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl transition-colors duration-200">
-              <Shield className="w-5 h-5 mr-2" />
-              Start New Scan
-            </Button>
-            <Button
-              variant="outline"
-              className="h-16 border-2 border-border hover:bg-muted font-semibold rounded-xl transition-colors duration-200"
-            >
-              <FileText className="w-5 h-5 mr-2" />
-              View Reports
-            </Button>
-            <Button
-              variant="outline"
-              className="h-16 border-2 border-border hover:bg-muted font-semibold rounded-xl transition-colors duration-200"
-            >
-              <Target className="w-5 h-5 mr-2" />
-              Manage Targets
-            </Button>
-          </div>
-        </motion.div>
-
-        {/* Recent Activity */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-border"
-        >
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            Recent Activity
-          </h2>
-          <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <div className="flex-1">
-                <p className="font-medium text-foreground">
-                  Scan completed for example.com
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  2 vulnerabilities found • 2 hours ago
-                </p>
-              </div>
+              ))}
             </div>
-            <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="flex-1">
-                <p className="font-medium text-foreground">
-                  Scan in progress for test-app.com
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Currently running • 45% complete
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
-              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <div className="flex-1">
-                <p className="font-medium text-foreground">
-                  New project created
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Project "E-commerce Security" • 1 day ago
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </main>
+          )}
+        </Card>
+      </div>
     </div>
-    </>
   );
 }

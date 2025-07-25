@@ -22,6 +22,49 @@ model User {
   createdAt DateTime @default(now())
   verificationToken String?
   emailVerified     Boolean  @default(false)
+  
+  // Relations
+  apiTokens ApiToken[]
+  requests  Request[]
+}
+
+model ApiToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  name      String   @default("Browser Extension")
+  userId    Int
+  createdAt DateTime @default(now())
+  lastUsed  DateTime?
+  
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Request {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  url         String
+  method      String
+  headers     Json
+  body        String?
+  timestamp   DateTime @default(now())
+  status      String   @default("pending") // pending, processing, completed, failed
+  
+  // Relations
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis Analysis?
+}
+
+model Analysis {
+  id          Int      @id @default(autoincrement())
+  requestId   Int      @unique
+  result      Json
+  status      String   @default("pending") // pending, completed, failed
+  createdAt   DateTime @default(now())
+  completedAt DateTime?
+  
+  // Relations
+  request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
 }
 
 model Waitlist {
