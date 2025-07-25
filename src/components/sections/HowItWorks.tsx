@@ -1,5 +1,6 @@
 "use client";
 
+import Height from "@/components/height";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FloatingCard } from "@/components/animations/FloatingCard";
@@ -47,6 +48,8 @@ export function HowItWorks() {
   ];
 
   return (
+    <>
+    <Height/>
     <section className="py-20 bg-muted/30 relative overflow-hidden">
       {/* Background Elements - Subtle */}
       <div className="absolute inset-0">
@@ -155,5 +158,6 @@ export function HowItWorks() {
         </div>
       </div>
     </section>
+    </>
   );
 }

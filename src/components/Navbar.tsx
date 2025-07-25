@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Shield, Menu, X, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ export function Navbar() {
 
   const navItems = [
     { name: "Product", href: "#features" },
-    { name: "How It Works", href: "#how-it-works" },
+    { name: "How It Works", href: "/how-it-works" },
     { name: "Pricing", href: "#pricing" },
     { name: "Resources", href: "#resources" },
     { name: "Support", href: "#support" },
@@ -69,24 +70,28 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Button
-              variant="ghost"
-              className="text-muted-foreground hover:text-primary"
-            >
-              Sign In
-            </Button>
-            <Button className="group relative overflow-hidden">
-              <span className="relative z-10 flex items-center gap-2">
-                Join The Waitlist Now 🚀
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-white/20"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.6 }}
-              />
-            </Button>
+            <Link href="/auth/login">
+              <Button
+                variant="ghost"
+                className="text-muted-foreground hover:text-primary"
+              >
+                Sign In
+              </Button>
+            </Link>
+            <Link href="/auth/signup">
+              <Button className="group relative overflow-hidden">
+                <span className="relative z-10 flex items-center gap-2">
+                  Join The Waitlist Now 🚀
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-white/20"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.6 }}
+                />
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -128,24 +133,28 @@ export function Navbar() {
                   </motion.a>
                 ))}
                 <div className="pt-4 space-y-3 border-t border-border">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-muted-foreground hover:text-primary"
-                  >
-                    Sign In
-                  </Button>
-                  <Button className="w-full group relative overflow-hidden">
-                    <span className="relative z-10 flex items-center gap-2">
-                      Join The Waitlist Now 🚀
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-white/20"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.6 }}
-                    />
-                  </Button>
+                  <Link href="/auth/login">
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-muted-foreground hover:text-primary"
+                    >
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link href="/auth/signup">
+                    <Button className="w-full group relative overflow-hidden">
+                      <span className="relative z-10 flex items-center gap-2">
+                        Join The Waitlist Now 🚀
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </span>
+                      <motion.div
+                        className="absolute inset-0 bg-white/20"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "100%" }}
+                        transition={{ duration: 0.6 }}
+                      />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
