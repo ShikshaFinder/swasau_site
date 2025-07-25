@@ -19,12 +19,12 @@ export default function Home() {
         <Link href="/auth/login" className="text-primary hover:underline">
           Login
         </Link>
-        <Link
+        {/* <Link
           href="/verify-email?token=demo"
           className="text-primary hover:underline"
         >
           Verify Email (Demo)
-        </Link>
+        </Link> */}
         <Link href="/waitlist" className="text-primary hover:underline">
           Join Waitlist
         </Link>

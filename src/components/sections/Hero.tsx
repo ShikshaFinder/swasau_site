@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { GradientText } from "@/components/animations/GradientText";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { Shield, Zap, Cpu, Lock } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -90,16 +91,19 @@ export function Hero() {
         <ScrollReveal delay={0.8}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
+              asChild
               size="xl"
               className="group relative overflow-hidden shadow-lg hover:shadow-xl"
             >
-              <span className="relative z-10">Join The Waitlist Now 🚀</span>
-              <motion.div
-                className="absolute inset-0 bg-white/20"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.6 }}
-              />
+              <Link href="/waitlist">
+                <span className="relative z-10">Join The Waitlist Now 🚀</span>
+                <motion.div
+                  className="absolute inset-0 bg-white/20"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.6 }}
+                />
+              </Link>
             </Button>
             <Button
               variant="outline"
@@ -159,7 +163,6 @@ export function Hero() {
                 and Kali Linux
               </div>
             </motion.div>
-
 
             <motion.div
               className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
