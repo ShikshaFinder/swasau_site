@@ -25,6 +25,9 @@ export default function Home() {
         >
           Verify Email (Demo)
         </Link>
+        <Link href="/waitlist" className="text-primary hover:underline">
+          Join Waitlist
+        </Link>
       </nav>
       <Hero />
       {/* CSAI Agent Purpose and Workflow Summary */}
