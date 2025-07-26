@@ -121,10 +121,10 @@ export function HowItWorks() {
             {steps.map((step, index) => (
               <FloatingCard
                 key={index}
-                delay={step.delay}
+                delay={index * 0.1}
                 className="transform hover:rotate-1"
               >
-                <ScrollReveal delay={step.delay}>
+                <ScrollReveal delay={index * 0.1}>
                   <Card className="h-full border border-border shadow-lg bg-white hover:shadow-xl transition-all duration-300">
                     <CardHeader className="text-center pb-4">
                       <motion.div

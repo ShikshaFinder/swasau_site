@@ -55,6 +55,10 @@ export function Pricing() {
       popular: false,
       cta: "Start Project",
       href: "/contact",
+      delay: 0.2,
+      icon: Shield,
+      bgColor: "bg-blue-50",
+      color: "text-blue-600",
     },
     {
       name: "Professional",
@@ -75,6 +79,10 @@ export function Pricing() {
       popular: true,
       cta: "Get Started",
       href: "/contact",
+      delay: 0.4,
+      icon: Zap,
+      bgColor: "bg-yellow-50",
+      color: "text-yellow-600",
     },
     {
       name: "Enterprise",
@@ -95,6 +103,10 @@ export function Pricing() {
       popular: false,
       cta: "Contact Sales",
       href: "/contact",
+      delay: 0.6,
+      icon: Crown,
+      bgColor: "bg-purple-50",
+      color: "text-purple-600",
     },
   ];
 
@@ -191,11 +203,11 @@ export function Pricing() {
                     <div className="mb-6">
                       <div className="flex items-baseline justify-center gap-1">
                         <span className="text-4xl font-bold text-primary">
+                          {plan.price}
+                        </span>
+                        <span className="text-muted-foreground">
                           {plan.period}
                         </span>
-                        {plan.price > 0 && (
-                          <span className="text-muted-foreground">/month</span>
-                        )}
                       </div>
                     </div>
                   </CardHeader>
@@ -228,8 +240,8 @@ export function Pricing() {
                       }`}
                       size="lg"
                     >
-                      {plan.price === 0
-                        ? "Join The Waitlist Now 🚀"
+                      {plan.price === "Custom"
+                        ? "Contact Sales"
                         : "Choose Plan"}
                     </Button>
                   </CardContent>
