@@ -9,14 +9,34 @@ import { useState, useEffect } from "react";
 export function Testimonials() {
   const testimonials = [
     {
-      name: "Harsh Jani",
-      role: "Full Stack Developer",
+      name: "Amit Sharma",
+      role: "CTO, TechNova Solutions",
       location: "India",
       content:
-        "aicybershield.tech has revolutionized our bug bounty program. The AI-powered analysis catches vulnerabilities we would have missed and the 1-2 days response time is incredible.",
+        "SWASAU delivered our industrial IoT project on time and exceeded our expectations. Their expertise in embedded systems is unmatched.",
       rating: 5,
-      avatar: "HJ",
-      company: "GWSF Ventures Pvt. Ltd.",
+      avatar: "AS",
+      company: "TechNova Solutions",
+    },
+    {
+      name: "Priya Desai",
+      role: "Product Manager, MedDetect",
+      location: "India",
+      content:
+        "The custom medical device they built helped us launch faster and with confidence. Highly recommended for complex product development!",
+      rating: 5,
+      avatar: "PD",
+      company: "MedDetect",
+    },
+    {
+      name: "Rohit Verma",
+      role: "Founder, PetTrackr",
+      location: "India",
+      content:
+        "Their team turned our pet tracking idea into a real, working product. Great communication and technical skills!",
+      rating: 5,
+      avatar: "RV",
+      company: "PetTrackr",
     },
   ];
 
@@ -63,36 +83,18 @@ export function Testimonials() {
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-4"
-            >
-              <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20">
-                Security Team Success Stories
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
-            >
-              What Our <span className="gradient-text">Security Teams Say</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-muted-foreground max-w-3xl mx-auto"
-            >
-              Real stories from security professionals who have transformed
-              their operations with AI-powered automation and lightning-fast
-              vulnerability assessment.
-            </motion.p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
+              Technology Team Success Stories
+            </h2>
+            <p className="text-xl text-muted-foreground mb-4">
+              What Our{" "}
+              <span className="gradient-text">Technology Teams Say</span>
+            </p>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Real stories from technology professionals who have transformed
+              their projects with our custom embedded solutions and IoT
+              expertise.
+            </p>
           </div>
         </ScrollReveal>
 
@@ -188,7 +190,7 @@ export function Testimonials() {
             >
               <div className="text-3xl font-bold text-primary mb-2">5+</div>
               <div className="text-sm text-muted-foreground">
-                Security Teams
+                Technology Teams
               </div>
             </motion.div>
 

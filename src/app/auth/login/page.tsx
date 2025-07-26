@@ -58,11 +58,9 @@ export default function LoginPage() {
               <Shield className="w-6 h-6 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Welcome back
-          </h1>
+          <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
           <p className="text-muted-foreground">
-            Sign in to your AICyberShield account
+            Sign in to your Swasau Technologies account
           </p>
         </div>
 

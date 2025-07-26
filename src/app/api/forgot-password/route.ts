@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     if (!apiKey) {
       return new Response(JSON.stringify({ error: "Missing RESEND_API_KEY" }), { status: 500 });
     }
-      const resetUrl = `https://aicybershield.tech/reset-password?token=${token}`;
+      const resetUrl = `https://swasau.com/reset-password?token=${token}`;
     await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "no-reply@aicybershield.tech",
+        from: "no-reply@swasau.com",
         to: email,
         subject: "Password Reset",
         html: `<p>Click <a href='${resetUrl}'>here</a> to reset your password.</p>`

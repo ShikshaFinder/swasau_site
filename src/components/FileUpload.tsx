@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Lock, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 export default function FileUpload() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -211,19 +213,27 @@ Session: test-session-123`;
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>AI Cybersecurity Scanner</CardTitle>
+          <CardTitle>Embedded Systems Development</CardTitle>
           <CardDescription>
-            Upload security data files and trigger AI-powered analysis
+            Upload your project requirements and get started with custom
+            embedded solutions
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {!isLoggedIn ? (
-            <div className="space-y-4">
-              <p className="text-sm text-gray-600">
-                Please log in to use the security scanner
+            <div className="text-center py-8">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                <Lock className="w-8 h-8 text-muted-foreground" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">
+                Authentication Required
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                Please log in to access our embedded systems development
+                platform
               </p>
-              <Button onClick={handleLogin}>
-                Login (test@example.com / password)
+              <Button asChild>
+                <Link href="/auth/login">Sign In</Link>
               </Button>
             </div>
           ) : (
@@ -276,7 +286,7 @@ Session: test-session-123`;
                 >
                   {isAnalyzing
                     ? "Starting Analysis..."
-                    : "Start Security Analysis"}
+                    : "Start Project Development"}
                 </Button>
                 {analyzeResult && (
                   <div className="p-4 bg-blue-50 border border-blue-200 rounded">

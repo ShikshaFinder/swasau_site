@@ -19,11 +19,11 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Product", href: "#features" },
-    { name: "How It Works", href: "/how-it-works" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Resources", href: "#resources" },
-    { name: "Support", href: "#support" },
+    { name: "Services", href: "/services" },
+    { name: "Projects", href: "/projects" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -49,7 +49,7 @@ export function Navbar() {
               <Shield className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-foreground">
-              aicybershield.tech
+              SWASAU Technology
             </span>
           </motion.div>
 
@@ -70,18 +70,18 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/auth/login">
+            <Link href="/contact">
               <Button
                 variant="ghost"
                 className="text-muted-foreground hover:text-primary"
               >
-                Sign In
+                Contact Us
               </Button>
             </Link>
-            <Link href="/auth/signup">
+            <Link href="/contact">
               <Button className="group relative overflow-hidden">
                 <span className="relative z-10 flex items-center gap-2">
-                  Join The Waitlist Now 🚀
+                  Get a Quote
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <motion.div
@@ -133,18 +133,18 @@ export function Navbar() {
                   </motion.a>
                 ))}
                 <div className="pt-4 space-y-3 border-t border-border">
-                  <Link href="/auth/login">
+                  <Link href="/contact">
                     <Button
                       variant="ghost"
                       className="w-full justify-start text-muted-foreground hover:text-primary"
                     >
-                      Sign In
+                      Contact Us
                     </Button>
                   </Link>
-                  <Link href="/auth/signup">
+                  <Link href="/contact">
                     <Button className="w-full group relative overflow-hidden">
                       <span className="relative z-10 flex items-center gap-2">
-                        Join The Waitlist Now 🚀
+                        Get a Quote
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </span>
                       <motion.div

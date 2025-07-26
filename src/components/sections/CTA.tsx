@@ -61,7 +61,7 @@ export function CTA() {
               className="mb-6"
             >
               <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-foreground rounded-full text-sm font-medium border border-white/30">
-                🚀 Ready to Transform Your Security Operations?
+                🚀 Ready to Build Your Dream Solution?
               </span>
             </motion.div>
 
@@ -72,7 +72,7 @@ export function CTA() {
               className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground"
             >
               Start Your{" "}
-              <span className="gradient-text">Easy & Smart Protection</span>{" "}
+              <span className="gradient-text">Custom Embedded Solution</span>{" "}
               Journey Today
             </motion.h2>
 
@@ -82,8 +82,9 @@ export function CTA() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
             >
-              Try our simple tool to keep your websites and apps safe. No tech
-              skills needed—just easy, smart protection for everyone.
+              From concept to prototype to production, we turn your ideas into
+              reality with custom embedded hardware, firmware, and IoT
+              solutions.
             </motion.p>
 
             <motion.div
@@ -97,7 +98,7 @@ export function CTA() {
                 className="group relative overflow-hidden shadow-lg hover:shadow-xl bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Join The Waitlist Now 🚀
+                  Get a Quote
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <motion.div
@@ -113,7 +114,7 @@ export function CTA() {
                 size="xl"
                 className="border-2 border-border hover:bg-muted text-foreground"
               >
-                Watch Demo
+                Schedule a Call
               </Button>
             </motion.div>
 
@@ -133,9 +134,11 @@ export function CTA() {
                   <Shield className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Zero Setup</h3>
+                  <h3 className="font-semibold text-foreground">
+                    Custom Design
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Get started in under 5 minutes
+                    Tailored to your specific requirements
                   </p>
                 </div>
               </motion.div>
@@ -150,10 +153,10 @@ export function CTA() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">
-                    Lightning Fast
+                    Fast Prototyping
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Results in 1-2 days
+                    Rapid development and testing
                   </p>
                 </div>
               </motion.div>
@@ -168,10 +171,10 @@ export function CTA() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">
-                    Enterprise Ready
+                    Production Ready
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Scale to any team size
+                    Scalable to manufacturing
                   </p>
                 </div>
               </motion.div>
@@ -185,15 +188,18 @@ export function CTA() {
               className="mt-12 pt-8 border-t border-border/50"
             >
               <p className="text-sm text-muted-foreground mb-4">
-                Trusted by security teams at:
+                Trusted by companies in:
               </p>
               <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
                 <div className="text-lg font-semibold text-foreground">
-                  GWSF Ventures Pvt. Ltd.
+                  TechNova Solutions
                 </div>
-                {/* <div className="text-lg font-semibold text-foreground">CyberDefense Inc</div>
-                <div className="text-lg font-semibold text-foreground"></div>
-                <div className="text-lg font-semibold text-foreground"></div> */}
+                <div className="text-lg font-semibold text-foreground">
+                  MedDetect
+                </div>
+                <div className="text-lg font-semibold text-foreground">
+                  PetTrackr
+                </div>
               </div>
             </motion.div>
           </div>

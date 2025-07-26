@@ -7,32 +7,32 @@ import { Shield, Github, Twitter, Linkedin, Mail, Globe } from "lucide-react";
 export function Footer() {
   const footerLinks = {
     product: [
-      { name: "Browser Extension", href: "#" },
-      { name: "AI Security Agent", href: "#" },
-      { name: "Kubernetes Backend", href: "#" },
-      { name: "API Documentation", href: "#" },
-      { name: "Security Features", href: "#" },
+      { name: "Embedded Hardware Design", href: "#" },
+      { name: "Firmware Development", href: "#" },
+      { name: "IoT Product Development", href: "#" },
+      { name: "Prototyping", href: "#" },
+      { name: "Industrial Automation", href: "#" },
     ],
     solutions: [
-      { name: "Bug Bounty Programs", href: "#" },
-      { name: "Penetration Testing", href: "#" },
-      { name: "Vulnerability Assessment", href: "#" },
-      { name: "Red Team Operations", href: "#" },
-      { name: "DevSecOps Integration", href: "#" },
+      { name: "Wireless/Bluetooth/NB-IoT Integration", href: "#" },
+      { name: "End-to-End Product Engineering", href: "#" },
+      { name: "Custom Solutions", href: "#" },
+      { name: "Consulting", href: "#" },
+      { name: "Support", href: "#" },
     ],
     resources: [
-      { name: "Security Blog", href: "#" },
-      { name: "Vulnerability Database", href: "#" },
-      { name: "API Reference", href: "#" },
-      { name: "Security Guides", href: "#" },
-      { name: "Community Forum", href: "#" },
+      { name: "Blog / Insights", href: "#" },
+      { name: "Careers", href: "#" },
+      { name: "Newsletter", href: "#" },
+      { name: "Downloads", href: "#" },
+      { name: "FAQ", href: "#" },
     ],
     company: [
       { name: "About Us", href: "#" },
-      { name: "Security Team", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Contact Sales", href: "#" },
-      { name: "Support", href: "#" },
+      { name: "Our Projects", href: "#" },
+      { name: "Contact", href: "#" },
+      { name: "Team", href: "#" },
+      { name: "Internships", href: "#" },
     ],
   };
 
@@ -62,45 +62,41 @@ export function Footer() {
         {/* Main Footer Content */}
         <div className="py-16">
           <ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-8">
-              {/* Brand Section */}
-              <div className="col-span-2">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="mb-6"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-white" />
-                    </div>
-                    <span className="text-2xl font-bold text-foreground">
-                      aicybershield.tech
-                    </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {/* Company Info */}
+              <div className="lg:col-span-2">
+                <div className="flex items-center mb-4">
+                  <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center mr-3">
+                    <span className="text-white font-bold text-sm">ST</span>
                   </div>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    AI-powered cybersecurity automation platform that
-                    streamlines bug bounty and pentesting workflows with
-                    lightning-fast vulnerability assessment.
-                  </p>
-
-                  {/* Social Links */}
-                  <div className="flex gap-4">
-                    {socialLinks.map((social, index) => (
-                      <motion.a
-                        key={index}
-                        href={social.href}
-                        className="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-border hover:border-primary transition-colors duration-300 group"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        aria-label={social.label}
-                      >
-                        <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                      </motion.a>
-                    ))}
-                  </div>
-                </motion.div>
+                  <span className="text-xl font-bold text-foreground">
+                    Swasau Technologies
+                  </span>
+                </div>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Custom embedded solutions for IoT, automation, and product
+                  development. Contact us: info@swasau.com | +91-9876543210
+                </p>
+                <div className="flex space-x-4">
+                  <a
+                    href="#"
+                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
 
               {/* Product Links */}
@@ -220,39 +216,13 @@ export function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="py-6 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4"
+            className="border-t border-border pt-8 mt-12"
           >
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <span>© 2024 aicybershield.tech. All rights reserved.</span>
-              <span>•</span>
-              <span>Made with ❤️ for the security community</span>
-            </div>
-
-            <div className="flex items-center gap-6 text-sm">
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Security
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Compliance
-              </a>
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <span>© 2024 Swasau Technologies. All rights reserved.</span>
+              <div className="flex items-center mt-4 md:mt-0">
+                <span>Made with ❤️ for the technology community</span>
+              </div>
             </div>
           </motion.div>
         </ScrollReveal>

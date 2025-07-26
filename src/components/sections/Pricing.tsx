@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Shield, Zap, Crown } from "lucide-react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export function Pricing() {
   const [counts, setCounts] = useState({ starter: 0, pro: 0, enterprise: 0 });
@@ -39,62 +40,61 @@ export function Pricing() {
   const plans = [
     {
       name: "Starter",
-      price: counts.starter,
-      period: "$0",
-      description: "Perfect for individual researchers and bug bounty hunters",
+      price: "$999",
+      period: "/project",
+      description:
+        "Perfect for individual researchers and technology enthusiasts",
       features: [
-        "Browser extension access",
-        "Basic vulnerability scanning",
-        "5 AI agent runs per month",
-        "Community support",
-        "Standard response time",
+        "Basic embedded system design",
+        "PCB prototyping support",
+        "Firmware development",
+        "Basic IoT integration",
+        "Email support",
+        "1 month warranty",
       ],
-      icon: Shield,
-      color: "text-primary",
-      bgColor: "bg-primary/10",
       popular: false,
-      delay: 0.2,
+      cta: "Start Project",
+      href: "/contact",
     },
     {
       name: "Professional",
-      price: counts.pro,
-      period: "$299",
-      description: "Advanced features for security teams and red teams",
+      price: "$2,999",
+      period: "/project",
+      description:
+        "Advanced features for technology teams and engineering firms",
       features: [
-        "Everything in Starter",
-        "Unlimited AI agent runs",
-        "Advanced vulnerability detection",
+        "Custom embedded solutions",
+        "Advanced PCB design",
+        "Complex firmware development",
+        "Full IoT integration",
+        "Cloud connectivity",
         "Priority support",
-        "Custom scan configurations",
-        "Team collaboration tools",
-        "API access",
+        "3 months warranty",
+        "Technical documentation",
       ],
-      icon: Zap,
-      color: "text-secondary",
-      bgColor: "bg-secondary/10",
       popular: true,
-      delay: 0.4,
+      cta: "Get Started",
+      href: "/contact",
     },
     {
       name: "Enterprise",
-      price: counts.enterprise,
-      period: "$999",
-      description: "Complete solution for large organizations and CISOs",
+      price: "Custom",
+      period: "",
+      description:
+        "Custom solutions for large organizations and complex projects",
       features: [
-        "Everything in Professional",
-        "Custom AI model training",
-        "Dedicated infrastructure",
+        "End-to-end product development",
+        "Custom VLSI design",
+        "Advanced AI/ML integration",
+        "Industrial automation",
         "24/7 dedicated support",
-        "White-label solutions",
-        "Advanced analytics dashboard",
-        "Multi-node deployment",
-        "Compliance reporting",
+        "1 year warranty",
+        "Training & documentation",
+        "Ongoing maintenance",
       ],
-      icon: Crown,
-      color: "text-primary",
-      bgColor: "bg-primary/10",
       popular: false,
-      delay: 0.6,
+      cta: "Contact Sales",
+      href: "/contact",
     },
   ];
 
@@ -132,36 +132,15 @@ export function Pricing() {
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-4"
-            >
-              <span className="inline-block px-4 py-2 bg-secondary/10 text-secondary-foreground rounded-full text-sm font-medium border border-secondary/20">
-                Choose Your Plan
-              </span>
-            </motion.div>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
-            >
-              Secure Pricing for{" "}
-              <span className="gradient-text">Every Security Team</span>
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-muted-foreground max-w-3xl mx-auto"
-            >
-              From individual researchers to enterprise security teams, 
-              we have the perfect plan to scale your security operations with AI automation.
-            </motion.p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
+              Choose Your{" "}
+              <span className="gradient-text">Technology Solution</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              From individual researchers to enterprise technology teams, we
+              have the perfect plan to scale your embedded solutions and IoT
+              development needs.
+            </p>
           </div>
         </ScrollReveal>
 
@@ -170,7 +149,7 @@ export function Pricing() {
           {plans.map((plan, index) => (
             <ScrollReveal key={index} delay={plan.delay}>
               <motion.div
-                className={`relative ${plan.popular ? 'md:-mt-4 md:mb-4' : ''}`}
+                className={`relative ${plan.popular ? "md:-mt-4 md:mb-4" : ""}`}
                 whileHover={{ y: -10 }}
                 transition={{ duration: 0.3 }}
               >
@@ -186,10 +165,12 @@ export function Pricing() {
                     </span>
                   </motion.div>
                 )}
-                
-                <Card className={`h-full border border-border shadow-lg bg-white hover:shadow-xl transition-all duration-300 ${
-                  plan.popular ? 'ring-2 ring-secondary' : ''
-                }`}>
+
+                <Card
+                  className={`h-full border border-border shadow-lg bg-white hover:shadow-xl transition-all duration-300 ${
+                    plan.popular ? "ring-2 ring-secondary" : ""
+                  }`}
+                >
                   <CardHeader className="text-center pb-6">
                     <motion.div
                       className={`w-16 h-16 ${plan.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-4 border border-current/10`}
@@ -198,15 +179,15 @@ export function Pricing() {
                     >
                       <plan.icon className={`w-8 h-8 ${plan.color}`} />
                     </motion.div>
-                    
+
                     <CardTitle className="text-2xl font-bold mb-2 text-foreground">
                       {plan.name}
                     </CardTitle>
-                    
+
                     <p className="text-muted-foreground mb-6">
                       {plan.description}
                     </p>
-                    
+
                     <div className="mb-6">
                       <div className="flex items-baseline justify-center gap-1">
                         <span className="text-4xl font-bold text-primary">
@@ -218,7 +199,7 @@ export function Pricing() {
                       </div>
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent className="pt-0">
                     <ul className="space-y-3 mb-8">
                       {plan.features.map((feature, featureIndex) => (
@@ -227,23 +208,29 @@ export function Pricing() {
                           className="flex items-center gap-3"
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: plan.delay + featureIndex * 0.1 }}
+                          transition={{
+                            delay: plan.delay + featureIndex * 0.1,
+                          }}
                         >
                           <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                          <span className="text-muted-foreground">{feature}</span>
+                          <span className="text-muted-foreground">
+                            {feature}
+                          </span>
                         </motion.li>
                       ))}
                     </ul>
-                    
+
                     <Button
                       className={`w-full ${
-                        plan.popular 
-                          ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90' 
-                          : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                        plan.popular
+                          ? "bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                          : "bg-primary text-primary-foreground hover:bg-primary/90"
                       }`}
                       size="lg"
                     >
-                      {plan.price === 0 ? 'Join The Waitlist Now 🚀' : 'Choose Plan'}
+                      {plan.price === 0
+                        ? "Join The Waitlist Now 🚀"
+                        : "Choose Plan"}
                     </Button>
                   </CardContent>
                 </Card>
@@ -260,25 +247,19 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block p-8 rounded-3xl bg-gradient-to-r from-primary/5 to-secondary/5 backdrop-blur-sm border border-border shadow-lg">
-              <h3 className="text-2xl font-bold mb-4 text-foreground">
-                Need Custom Enterprise Solutions?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Our team is here to help you design the perfect security automation solution for your organization.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" size="lg" className="border-2 hover:bg-muted">
-                  Contact Sales
-                </Button>
-                <Button size="lg">
-                  Schedule Demo
-                </Button>
-              </div>
-            </div>
+            <h3 className="text-2xl font-bold mb-4 text-foreground">
+              Need a Custom Solution?
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+              Our team is here to help you design the perfect technology
+              solution for your organization.
+            </p>
+            <Button size="lg" className="text-lg px-8 py-6">
+              <Link href="/contact">Contact Our Team</Link>
+            </Button>
           </motion.div>
         </ScrollReveal>
       </div>
     </section>
-  )
+  );
 }

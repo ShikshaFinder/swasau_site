@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     // Send verification email
     const apiKey = process.env.RESEND_API_KEY;
     if (apiKey) {
-      const verifyUrl = `https://aicybershield.tech/verify-email?token=${verificationToken}`;
+      const verifyUrl = `https://swasau.com/verify-email?token=${verificationToken}`;
       await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "no-reply@aicybershield.tech",
+          from: "no-reply@swasau.com",
           to: email,
           subject: "Verify your email",
           html: `<p>Welcome! Please <a href='${verifyUrl}'>click here</a> to verify your email address.</p>`,

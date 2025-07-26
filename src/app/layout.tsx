@@ -1,60 +1,50 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "aicybershield.tech - AI-Powered Cybersecurity Automation Platform",
+  title: "Swasau Technologies - Custom Embedded Solutions & IoT Development",
   description:
-    "Streamline bug bounty and pentesting workflows with AI-powered browser extension and scalable Kubernetes backend. Lightning-fast reconnaissance and vulnerability assessment from browser to pod in seconds.",
+    "Leading provider of custom embedded solutions, IoT development, VLSI design, and product engineering. Specializing in microcontroller firmware, PCB design, and industrial automation.",
   keywords: [
-    "cybersecurity",
-    "AI automation",
-    "bug bounty",
-    "pentesting",
-    "vulnerability assessment",
-    "browser extension",
-    "kubernetes",
-    "security automation",
-    "ethical hacking",
-    "red team",
-    "DevSecOps",
-    "threat response",
+    "embedded systems",
+    "IoT development",
+    "VLSI design",
+    "product engineering",
+    "microcontroller firmware",
+    "PCB design",
+    "industrial automation",
+    "custom solutions",
+    "technology innovation",
+    "make in india",
   ],
-  authors: [{ name: "aicybershield.tech Team" }],
-  creator: "aicybershield.tech",
-  publisher: "aicybershield.tech",
+  authors: [{ name: "Swasau Technologies Team" }],
+  creator: "Swasau Technologies",
+  publisher: "Swasau Technologies",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://aicybershield.tech"),
+  metadataBase: new URL("https://swasau.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "aicybershield.tech - AI-Powered Cybersecurity Automation Platform",
+    title: "Swasau Technologies - Custom Embedded Solutions & IoT Development",
     description:
-      "Streamline bug bounty and pentesting workflows with AI-powered browser extension and scalable Kubernetes backend. Lightning-fast reconnaissance and vulnerability assessment from browser to pod in seconds.",
-    url: "https://aicybershield.tech",
-    siteName: "aicybershield.tech",
+      "Leading provider of custom embedded solutions, IoT development, VLSI design, and product engineering. Specializing in microcontroller firmware, PCB design, and industrial automation.",
+    url: "https://swasau.com",
+    siteName: "Swasau Technologies",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "aicybershield.tech - AI-Powered Cybersecurity Automation",
+        alt: "Swasau Technologies - Custom Embedded Solutions & IoT Development",
       },
     ],
     locale: "en_US",
@@ -62,43 +52,21 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "aicybershield.tech - AI-Powered Cybersecurity Automation Platform",
+    title: "Swasau Technologies - Custom Embedded Solutions & IoT Development",
     description:
-      "Streamline bug bounty and pentesting workflows with AI-powered browser extension and scalable Kubernetes backend. Lightning-fast reconnaissance and vulnerability assessment from browser to pod in seconds.",
+      "Leading provider of custom embedded solutions, IoT development, VLSI design, and product engineering. Specializing in microcontroller firmware, PCB design, and industrial automation.",
     images: ["/og-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#0b4f82" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en">
+      <body className={inter.className}>
         <Navbar />
         {children}
       </body>

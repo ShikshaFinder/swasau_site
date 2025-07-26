@@ -109,11 +109,10 @@ export default function SignupPage() {
                 <Shield className="w-6 h-6 text-white" />
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">
-              Create account
-            </h1>
+            <h1 className="text-3xl font-bold mb-2">Create Your Account</h1>
             <p className="text-muted-foreground">
-              Join AICyberShield and secure your digital assets
+              Join Swasau Technologies and start building your custom embedded
+              solutions
             </p>
           </div>
 

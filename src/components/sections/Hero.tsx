@@ -9,7 +9,33 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-16 md:pt-20">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-white to-accent/10 pt-8 md:pt-12">
+      {/* Decorative SVG or Abstract Shape */}
+      <div className="absolute right-0 top-0 w-96 h-96 opacity-20 pointer-events-none select-none z-0">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 400 400"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="200" cy="200" r="180" fill="url(#paint0_radial)" />
+          <defs>
+            <radialGradient
+              id="paint0_radial"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientTransform="translate(200 200) scale(180)"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FFD600" stop-opacity="0.15" />
+              <stop offset="1" stop-color="#0057B8" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
       {/* Subtle Aurora Background */}
       <div className="absolute inset-0 aurora opacity-30"></div>
 
@@ -70,117 +96,52 @@ export function Hero() {
         {/* </motion.div> */}
         {/* </ScrollReveal>  */}
 
-        <ScrollReveal delay={0.4}>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-foreground ">
-            Your Smart Cybersecurity Helper
-            <GradientText className="block">
-              Easy, Fast, and Powerful
-            </GradientText>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+            Creating Dream <span className="gradient-text">Solutions</span>
           </h1>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.6}>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Our tool is like having a super-smart assistant that checks your
-            websites and apps for problems and keeps them safe. You don’t need
-            to be a tech expert—just let it do the hard work for you, quickly
-            and easily.
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            Custom embedded solutions for IoT, automation, and product
+            development. From concept to production, we bring your ideas to life
+            with cutting-edge technology.
           </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.8}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button
-              asChild
-              size="xl"
-              className="group relative overflow-hidden shadow-lg hover:shadow-xl"
-            >
-              <Link href="/waitlist">
-                <span className="relative z-10">Join The Waitlist Now 🚀</span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-              </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="text-lg px-8 py-6">
+              <Link href="/contact">Get a Quote</Link>
             </Button>
-            <Button
-              variant="outline"
-              size="xl"
-              className="border-2 hover:bg-muted"
-            >
-              Watch Demo
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+              <Link href="/contact">Schedule a Call</Link>
             </Button>
           </div>
-        </ScrollReveal>
+        </div>
 
         {/* Stats */}
-        <ScrollReveal delay={1.0}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex justify-center mb-2">
-                <Shield className="w-8 h-8 text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-primary">Easy to Use</div>
-              <div className="text-sm text-muted-foreground">
-                No tech skills needed
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex justify-center mb-2">
-                <Zap className="w-8 h-8 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-secondary">
-                Super Fast
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Checks everything quickly
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex justify-center mb-2">
-                <Cpu className="w-8 h-8 text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-primary">
-                Powered by Best LLMs
-              </div>
-              <div className="text-sm text-muted-foreground">
-                and Kali Linux
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex justify-center mb-2">
-                <Lock className="w-8 h-8 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-secondary">
-                Smart & Helpful
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Keeps your sites safe
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              50+
+            </div>
+            <div className="text-muted-foreground">Custom Design</div>
           </div>
-        </ScrollReveal>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              6
+            </div>
+            <div className="text-muted-foreground">Industries</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              100%
+            </div>
+            <div className="text-muted-foreground">Fast Prototyping</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              24/7
+            </div>
+            <div className="text-muted-foreground">Production Ready</div>
+          </div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

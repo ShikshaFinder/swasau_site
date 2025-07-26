@@ -12,56 +12,50 @@ import {
   Network,
   Bot,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Features() {
   const features = [
     {
-      icon: Bot,
-      title: "Easy for Everyone",
-      description: "You don’t need to be a tech expert. Anyone can use it!",
-      color: "text-primary",
-    },
-    {
-      icon: Zap,
-      title: "Fast Checks",
-      description: "Finds problems quickly so you can fix them sooner.",
-      color: "text-secondary",
-    },
-    {
       icon: Cpu,
-      title: "Smart Helper",
-      description: "Understands what you need and does the hard work for you.",
-      color: "text-primary",
-    },
-    {
-      icon: Shield,
-      title: "Keeps Your Sites Safe",
-      description: "Watches out for dangers and helps protect your stuff.",
-      color: "text-secondary",
-    },
-    {
-      icon: Lock,
-      title: "Always ready to help",
-      description: "Works in the background to keep you safe all the time.",
+      title: "Embedded Systems",
+      description:
+        "Custom embedded hardware and firmware solutions for specialized applications.",
       color: "text-primary",
     },
     {
       icon: Database,
-      title: "Learns and Improves",
+      title: "Silicon And VLSI",
       description:
-        "Gets better every time you use it, so you’re always protected.",
+        "Advanced VLSI design and silicon chip development for cutting-edge electronics.",
       color: "text-secondary",
     },
     {
       icon: Network,
-      title: "Works for Everyone",
-      description: "Great for companies, pentesters, and developers.",
+      title: "Internet Of Things",
+      description:
+        "End-to-end IoT solutions with sensor integration and cloud connectivity.",
       color: "text-primary",
     },
     {
-      icon: Chrome,
-      title: "No Extra Steps",
-      description: "Just start and let it handle everything for you.",
+      icon: Zap,
+      title: "Product Engineering",
+      description:
+        "Complete product development from concept to manufacturing-ready solutions.",
+      color: "text-secondary",
+    },
+    {
+      icon: Shield,
+      title: "AI & ML",
+      description:
+        "Intelligent solutions powered by artificial intelligence and machine learning.",
+      color: "text-primary",
+    },
+    {
+      icon: Network,
+      title: "Web Development",
+      description:
+        "Modern web applications and digital solutions for online presence.",
       color: "text-secondary",
     },
   ];
@@ -123,7 +117,7 @@ export function Features() {
               className="mb-4"
             >
               <span className="inline-block px-4 py-2 bg-secondary/10 text-secondary-foreground rounded-full text-sm font-medium border border-secondary/20">
-                Advanced Security Features
+                Our Expertise
               </span>
             </motion.div>
 
@@ -133,8 +127,8 @@ export function Features() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
             >
-              Simple, Powerful Protection
-              <span className="gradient-text"> For Everyone</span>
+              Custom Embedded Solutions
+              <span className="gradient-text"> For Every Industry</span>
             </motion.h2>
 
             <motion.p
@@ -143,8 +137,8 @@ export function Features() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl text-muted-foreground max-w-3xl mx-auto"
             >
-              Our tool is made for everyone. It’s easy, fast, and keeps you
-              safe—no tech skills needed.
+              We specialize in creating custom embedded hardware, firmware, and
+              IoT solutions tailored to your specific industry and requirements.
             </motion.p>
           </div>
         </ScrollReveal>
@@ -182,6 +176,286 @@ export function Features() {
           ))}
         </div>
 
+        {/* Our Projects Preview */}
+        <div className="mt-20">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
+              Our Recent Work
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Project 1 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">
+                  🌦️ Weather Monitoring System
+                </h3>
+                <div className="text-muted-foreground mb-1">
+                  Industrial Applications
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Advanced system collecting diverse weather parameters via
+                  RS485 serial communication with real-time dashboard and LED
+                  panel integration.
+                </p>
+                <div className="text-xs text-primary font-medium">
+                  Tech Used: RS485, Sensors, Real-time Dashboard
+                </div>
+              </div>
+              {/* Project 2 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">
+                  🏥 Medical Device for Disease Testing
+                </h3>
+                <div className="text-muted-foreground mb-1">Healthcare</div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Cutting-edge solution for disease testing with seamless
+                  controller and Android app integration for efficient
+                  diagnostics.
+                </p>
+                <div className="text-xs text-primary font-medium">
+                  Tech Used: Controller, Android App, Medical Sensors
+                </div>
+              </div>
+              {/* Project 3 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">
+                  🕷️ Spider Robot Controller
+                </h3>
+                <div className="text-muted-foreground mb-1">Robotics</div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Advanced controls and precision maneuvering system for spider
+                  robots with innovative robotics solutions.
+                </p>
+                <div className="text-xs text-primary font-medium">
+                  Tech Used: Robotics Control, Precision Systems
+                </div>
+              </div>
+              {/* Project 4 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">
+                  💡 LED Display Controller
+                </h3>
+                <div className="text-muted-foreground mb-1">
+                  Display Systems
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Real-time data management system for LED panels with dynamic
+                  content control and seamless updates.
+                </p>
+                <div className="text-xs text-primary font-medium">
+                  Tech Used: LED Control, Real-time Data Management
+                </div>
+              </div>
+              {/* Project 5 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">
+                  🔧 System On Chip (SoC)
+                </h3>
+                <div className="text-muted-foreground mb-1">
+                  Semiconductor Design
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Integrated hardware components including processors, memory,
+                  and peripherals in a single semiconductor chip.
+                </p>
+                <div className="text-xs text-primary font-medium">
+                  Tech Used: VLSI Design, Semiconductor Integration
+                </div>
+              </div>
+              {/* Project 6 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">
+                  🐶 Pet Health & Location Tracking Device
+                </h3>
+                <div className="text-muted-foreground mb-1">Consumer / IoT</div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Comprehensive pet tracking solution with health monitoring and
+                  GPS location tracking capabilities.
+                </p>
+                <div className="text-xs text-primary font-medium">
+                  Tech Used: GPS Module, NB-IoT, Accelerometer, ESP32-C6
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Why Choose Us */}
+        <div className="mt-20">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
+              Why Choose Us
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">
+                  Proven Track Record
+                </h3>
+                <p className="text-muted-foreground">
+                  Years of successful projects and satisfied clients.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">Fast Turnaround</h3>
+                <p className="text-muted-foreground">
+                  Rapid prototyping and delivery for your time-sensitive needs.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">
+                  Certified Engineers
+                </h3>
+                <p className="text-muted-foreground">
+                  Skilled, certified professionals on every project.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">
+                  Custom-Built Solutions
+                </h3>
+                <p className="text-muted-foreground">
+                  Tailored hardware and software for your unique requirements.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Technology Stack */}
+        <div className="mt-20">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
+              Technology Stack
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">MCUs</h3>
+                <p className="text-muted-foreground">
+                  STM32, ESP32, PIC, Nordic
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">Design Tools</h3>
+                <p className="text-muted-foreground">Altium, KiCAD, Eagle</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">Protocols</h3>
+                <p className="text-muted-foreground">
+                  BLE, LoRa, NB-IoT, MQTT, CAN
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
+                <h3 className="text-xl font-semibold mb-2">Cloud</h3>
+                <p className="text-muted-foreground">
+                  AWS IoT, Azure, Blynk, Firebase
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Our Clients */}
+        <div className="mt-20">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
+              Our Clients
+            </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+              At Swasau Technologies, we take pride in the strong relationships
+              we've built with our clients. From startups to established
+              enterprises, our engineering services have left a lasting impact.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Client 1 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Aarti Industries Limited
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Leading Indian manufacturer of speciality chemicals with a
+                  global footprint. We combine process chemistry competence with
+                  scale-up engineering competence for creating a sustainable
+                  future.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Visit them
+                </Button>
+              </div>
+              {/* Client 2 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Oizom
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Offers Environmental IoT and Environmental AI solutions for a
+                  sustainable future. Our Air Monitoring System is known for
+                  accurate environmental data using patented e-Breathing
+                  Technology.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Visit them
+                </Button>
+              </div>
+              {/* Client 3 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Scanpoint Geomatics Ltd
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Pioneering force in India's Geomatics Industry, introducing
+                  IGiS—an indigenous technology uniting GIS, Image Processing,
+                  Photogrammetry, and CAD.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Visit them
+                </Button>
+              </div>
+              {/* Client 4 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Vaibhav Equipment Service
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Provides complete air monitoring instrument's solution with
+                  its range of air pollution monitoring instruments. Vast
+                  experience in environmental monitoring.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Visit them
+                </Button>
+              </div>
+              {/* Client 5 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Silver Oak University
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Premier private university carrying forward the legacy of
+                  Silver Oak Group of Institutes. Delivers engaging learning
+                  experience through futuristic curriculum and advanced
+                  technological interface.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Visit them
+                </Button>
+              </div>
+              {/* Client 6 */}
+              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  Atal Innovation Centre
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Hosted by L. M. College of Pharmacy, supported by Atal
+                  Innovation Mission (AIM), NITI Aayog, Govt. of India. AIC-LMCP
+                  Foundation is a non-profit incubator.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Visit them
+                </Button>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
         {/* Bottom CTA */}
         <ScrollReveal delay={0.8}>
           <motion.div
@@ -192,19 +466,19 @@ export function Features() {
           >
             <div className="inline-block p-8 rounded-3xl bg-gradient-to-r from-primary/5 to-secondary/5 backdrop-blur-sm border border-border shadow-lg">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
-                Ready to Automate Your Security Workflow?
+                Ready to Build Your Custom Solution?
               </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl">
-                Join hundreds of security teams who have already transformed
-                their bug bounty and pentesting operations with AI-powered
-                automation.
+                Join dozens of companies who have already transformed their
+                ideas into reality with our custom embedded solutions and IoT
+                expertise.
               </p>
               <motion.button
                 className="px-8 py-3 bg-primary text-white rounded-2xl font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Join The Waitlist Now 🚀
+                Get a Quote 🚀
               </motion.button>
             </div>
           </motion.div>
