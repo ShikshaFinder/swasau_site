@@ -11,24 +11,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      <nav className="w-full flex justify-end gap-4 p-4">
-        <Link href="/services" className="text-primary hover:underline">
-          Services
-        </Link>
-        <Link href="/projects" className="text-primary hover:underline">
-          Projects
-        </Link>
-        <Link href="/about" className="text-primary hover:underline">
-          About
-        </Link>
-        <Link href="/blog" className="text-primary hover:underline">
-          Blog
-        </Link>
-        <Link href="/contact" className="text-primary hover:underline">
-          Contact
-        </Link>
-      </nav>
-      {/* Navigation links for IT firm pages */}
+  
       <Hero />
       <Features />
       <Testimonials />
