@@ -18,44 +18,58 @@ export function Features() {
   const features = [
     {
       icon: Cpu,
-      title: "Embedded Systems",
+      title: "Embedded Hardware Design",
       description:
-        "Custom embedded hardware and firmware solutions for specialized applications.",
+        "Custom embedded hardware solutions with PCB design and component selection for specialized applications.",
       color: "text-primary",
     },
     {
       icon: Database,
-      title: "Silicon And VLSI",
+      title: "Firmware Development",
       description:
-        "Advanced VLSI design and silicon chip development for cutting-edge electronics.",
+        "Low-level firmware development for microcontrollers and embedded systems with optimized performance.",
       color: "text-secondary",
-    },
-    {
-      icon: Network,
-      title: "Internet Of Things",
-      description:
-        "End-to-end IoT solutions with sensor integration and cloud connectivity.",
-      color: "text-primary",
     },
     {
       icon: Zap,
-      title: "Product Engineering",
+      title: "Rapid Prototyping",
       description:
-        "Complete product development from concept to manufacturing-ready solutions.",
-      color: "text-secondary",
-    },
-    {
-      icon: Shield,
-      title: "AI & ML",
-      description:
-        "Intelligent solutions powered by artificial intelligence and machine learning.",
+        "Quick development and testing of concepts with fast turnaround times for proof of concepts.",
       color: "text-primary",
     },
     {
       icon: Network,
+      title: "IoT Product Development",
+      description:
+        "End-to-end IoT solutions with sensor integration, cloud connectivity, and data analytics.",
+      color: "text-secondary",
+    },
+    {
+      icon: Bot,
+      title: "Wireless/Bluetooth/NB-IoT Integration",
+      description:
+        "Seamless integration of wireless communication protocols for connected devices and applications.",
+      color: "text-primary",
+    },
+    {
+      icon: Shield,
+      title: "End-to-End Product Engineering",
+      description:
+        "Complete product development from concept to manufacturing-ready solutions with full lifecycle support.",
+      color: "text-secondary",
+    },
+    {
+      icon: Chrome,
       title: "Web Development",
       description:
-        "Modern web applications and digital solutions for online presence.",
+        "Modern web applications and digital solutions for online presence and user interfaces.",
+      color: "text-primary",
+    },
+    {
+      icon: Lock,
+      title: "AI & ML",
+      description:
+        "Intelligent solutions powered by artificial intelligence and machine learning algorithms.",
       color: "text-secondary",
     },
   ];
@@ -143,7 +157,7 @@ export function Features() {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {features.map((feature, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
               <motion.div

@@ -73,3 +73,26 @@ model Waitlist {
   name      String?
   createdAt DateTime @default(now())
 }
+
+model Intern {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String   @unique
+  phone         String?
+  qualification String
+  resumeLink    String
+  portfolio     String?
+  github        String?
+  linkedin      String?
+  skills        String
+  experience    String?
+  project       String?
+  whyJoin       String
+  photoUrl      String?
+  isSelected    Boolean  @default(false)
+  selectedAt    DateTime?
+  status        String   @default("pending") // pending, selected, rejected
+  adminNotes    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

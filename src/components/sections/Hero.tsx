@@ -135,12 +135,12 @@ export function Hero() {
             </div>
             <div className="text-muted-foreground">Fast Prototyping</div>
           </div>
-          <div className="text-center">
+          {/* <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
               24/7
             </div>
             <div className="text-muted-foreground">Production Ready</div>
-          </div>
+          </div> */}
         </div>
       </div>
 
