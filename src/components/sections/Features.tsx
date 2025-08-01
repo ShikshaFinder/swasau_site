@@ -278,15 +278,23 @@ export function Features() {
               {/* Project 6 */}
               <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
                 <h3 className="text-xl font-semibold mb-2">
-                  🐶 Pet Health & Location Tracking Device
+                  🏭 3-Axis Gantry System For Pharmaceutical
                 </h3>
-                <div className="text-muted-foreground mb-1">Consumer / IoT</div>
+                <div className="text-muted-foreground mb-1">Industrial/IoT</div>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Comprehensive pet tracking solution with health monitoring and
-                  GPS location tracking capabilities.
+                  Precision 3-axis motion control using CoreYZ mechanism.
+                  Automated testing of pharmaceutical solutions via electrodes.
+                  Integrated ultrasonic cleaning for probe maintenance.
+                  User-friendly custom GUI for complete system operation.
+                  Centralized control of motion and cleaning sequences.
+                  Real-time data logging and monitoring of test results.
                 </p>
                 <div className="text-xs text-primary font-medium">
-                  Tech Used: GPS Module, NB-IoT, Accelerometer, ESP32-C6
+                  Tech Used: CoreYZ kinematics, NEMA 17 stepper motors, GT2
+                  belts & pulleys, Custom electrode interface, analog signal
+                  processing, Ultrasonic transducer module, MOSFET switching
+                  circuit, Arduino Mega, A4988/TMC stepper drivers, limit
+                  switches
                 </div>
               </div>
             </div>
@@ -344,12 +352,14 @@ export function Features() {
               <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
                 <h3 className="text-xl font-semibold mb-2">MCUs</h3>
                 <p className="text-muted-foreground">
-                  STM32, ESP32, PIC, Nordic
+                  STM32, ESP32, PIC, Nordic, Arduino, WCH
                 </p>
               </div>
               <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
                 <h3 className="text-xl font-semibold mb-2">Design Tools</h3>
-                <p className="text-muted-foreground">Altium, KiCAD, Eagle</p>
+                <p className="text-muted-foreground">
+                  Altium, KiCAD, Fusion360
+                </p>
               </div>
               <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
                 <h3 className="text-xl font-semibold mb-2">Protocols</h3>

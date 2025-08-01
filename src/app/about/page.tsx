@@ -21,31 +21,35 @@ export default function AboutPage() {
     {
       icon: Target,
       title: "Innovation Hub",
-      description: "Swasau Technologies is not just a service provider; we're an innovation hub. Our team of skilled professionals thrives on pushing the boundaries of what's possible, delivering solutions that stand out in today's fast-evolving digital landscape.",
+      description:
+        "Swasau Technologies is not just a service provider; we're an innovation hub. Our team of skilled professionals thrives on pushing the boundaries of what's possible, delivering solutions that stand out in today's fast-evolving digital landscape.",
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
     },
     {
       icon: Users,
       title: "Collaborative Approach",
-      description: "We don't just work for our clients; we work with them. Our collaborative approach ensures that we understand your unique needs, allowing us to tailor solutions that align perfectly with your goals.",
+      description:
+        "We don't just work for our clients; we work with them. Our collaborative approach ensures that we understand your unique needs, allowing us to tailor solutions that align perfectly with your goals.",
       color: "text-secondary",
-      bgColor: "bg-secondary/10"
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Award,
       title: "Technology Expertise",
-      description: "From web and mobile development to IoT, AI, and beyond, we boast a diverse range of technological expertise. Our team stays ahead of the curve, adopting the latest tools and frameworks to deliver solutions that are not just current but future-ready.",
+      description:
+        "From web and mobile development to IoT, AI, and beyond, we boast a diverse range of technological expertise. Our team stays ahead of the curve, adopting the latest tools and frameworks to deliver solutions that are not just current but future-ready.",
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
     },
     {
       icon: Lightbulb,
       title: "Passion for Innovation",
-      description: "Our values are anchored in a passion for innovation, integrity in all our endeavors, a commitment to excellence, and a customer-centric approach. We believe in fostering a collaborative and inclusive work environment that encourages creativity, continuous learning, and sustainable practices.",
+      description:
+        "Our values are anchored in a passion for innovation, integrity in all our endeavors, a commitment to excellence, and a customer-centric approach. We believe in fostering a collaborative and inclusive work environment that encourages creativity, continuous learning, and sustainable practices.",
       color: "text-secondary",
-      bgColor: "bg-secondary/10"
-    }
+      bgColor: "bg-secondary/10",
+    },
   ];
 
   const team = [
@@ -77,14 +81,7 @@ export default function AboutPage() {
       expertise: ["Embedded Systems", "Learning"],
       avatar: "NR",
     },
-    {
-      name: "Mansi Patel",
-      role: "AI Engineer",
-      description:
-        "Specialized in artificial intelligence and machine learning solutions for our cutting-edge projects.",
-      expertise: ["AI/ML", "Machine Learning", "Data Science"],
-      avatar: "MP",
-    },
+
     {
       name: "Manav Shah",
       role: "Intern",
@@ -95,43 +92,43 @@ export default function AboutPage() {
     },
     {
       name: "Niraj Patel",
-      role: "Intern",
+      role: "Electronic Hardware Engineer",
       description:
-        "Contributing to our product engineering and development initiatives.",
-      expertise: ["Product Engineering", "Development"],
+        "Specialized in electronic hardware design and PCB development for our innovative solutions.",
+      expertise: ["Hardware Design", "PCB Design", "Electronics"],
       avatar: "NP",
     },
     {
       name: "Ayan Vaidya",
-      role: "Intern",
+      role: "Senior Embedded Firmware Engineer",
       description:
-        "Working on innovative solutions and learning from our experienced team.",
-      expertise: ["Innovation", "Technology"],
+        "Experienced in embedded systems development and firmware engineering for our cutting-edge projects.",
+      expertise: ["Embedded Systems", "Firmware Engineering", "C/C++"],
       avatar: "AV",
     },
     {
       name: "Harsh Balsaraf",
-      role: "Intern",
+      role: "Design Engineer",
       description:
-        "Dedicated to learning and contributing to our engineering projects.",
-      expertise: ["Engineering", "Learning"],
+        "Focused on product design and engineering solutions for our innovative projects.",
+      expertise: ["Product Design", "Engineering", "CAD"],
       avatar: "HB",
     },
     {
-      name: "Bhakti Ramani",
-      role: "Intern",
+      name: "Darsh Patel",
+      role: "Embedded Engineer",
       description:
-        "Passionate about technology and contributing to our innovative solutions.",
-      expertise: ["Technology", "Innovation"],
-      avatar: "BR",
+        "Specialized in embedded systems development and microcontroller programming.",
+      expertise: ["Embedded Systems", "Microcontrollers", "Programming"],
+      avatar: "DP",
     },
     {
-      name: "Parth Thakkar",
+      name: "Chirag Patel",
       role: "Intern",
       description:
-        "Working on cutting-edge projects and learning from our experienced team.",
-      expertise: ["Project Development", "Learning"],
-      avatar: "PT",
+        "Passionate intern learning and contributing to our engineering projects.",
+      expertise: ["Learning", "Engineering"],
+      avatar: "CP",
     },
   ];
 
@@ -412,4 +409,3 @@ export default function AboutPage() {
     </main>
   );
 }
- 

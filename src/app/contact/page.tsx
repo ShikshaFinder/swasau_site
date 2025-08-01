@@ -77,8 +77,8 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Location",
-      value: "Mumbai, India",
-      link: "#",
+      value: "Ahmedabad, India",
+      link: "https://maps.app.goo.gl/",
       color: "text-primary",
       bgColor: "bg-primary/10",
     },
@@ -353,7 +353,7 @@ export default function ContactPage() {
                           Google Maps Integration
                         </p>
                         <p className="text-sm text-muted-foreground">
-                          Mumbai, India
+                          Ahmedabad, India
                         </p>
                       </div>
                     </div>
