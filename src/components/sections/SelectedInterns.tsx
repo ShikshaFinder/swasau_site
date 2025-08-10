@@ -25,6 +25,7 @@ interface Intern {
   portfolio?: string;
   selectedAt?: string;
   adminNotes?: string;
+  isSelected: boolean;
 }
 
 export function SelectedInterns() {

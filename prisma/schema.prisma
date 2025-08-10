@@ -19,13 +19,116 @@ model User {
   name      String
   email     String   @unique
   password  String
+  role      UserRole @default(CLIENT)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   verificationToken String?
   emailVerified     Boolean  @default(false)
   
   // Relations
   apiTokens ApiToken[]
   requests  Request[]
+  client    Client?
+  intern    Intern?
+}
+
+enum UserRole {
+  CLIENT
+  INTERN
+  ADMIN
+}
+
+model Client {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
+  company   String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projects Project[]
+}
+
+model Intern {
+  id            Int      @id @default(autoincrement())
+  userId        Int?     @unique
+  name          String
+  email         String   @unique
+  phone         String?
+  qualification String
+  resumeLink    String
+  portfolio     String?
+  github        String?
+  linkedin      String?
+  skills        String // JSON string of skills array
+  experience    String?
+  project       String?
+  whyJoin       String
+  photoUrl      String?
+  isSelected    Boolean  @default(false)
+  selectedAt    DateTime?
+  status        String   @default("pending") // pending, selected, rejected
+  adminNotes    String?
+  availability  Int?     // hours per week
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  user        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignments Assignment[]
+}
+
+model Project {
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String
+  category    ProjectCategory
+  budget      Decimal?
+  deadline    DateTime?
+  status      ProjectStatus @default(PENDING)
+  clientId    Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  // Relations
+  client      Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  assignments Assignment[]
+}
+
+enum ProjectCategory {
+  IOT
+  AI
+  WEBSITE
+  SOFTWARE
+  MOBILE_APP
+  BLOCKCHAIN
+  CYBERSECURITY
+  DATA_ANALYTICS
+  OTHER
+}
+
+enum ProjectStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  ON_HOLD
+  CANCELLED
+}
+
+model Assignment {
+  id        Int      @id @default(autoincrement())
+  projectId Int
+  internId  Int
+  assignedAt DateTime @default(now())
+  notes     String?
+  
+  // Relations
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  intern  Intern  @relation(fields: [internId], references: [id], onDelete: Cascade)
+  
+  @@unique([projectId, internId])
 }
 
 model ApiToken {
@@ -71,27 +174,4 @@ model Waitlist {
   email     String   @unique
   name      String?
   createdAt DateTime @default(now())
-}
-
-model Intern {
-  id            Int      @id @default(autoincrement())
-  name          String
-  email         String   @unique
-  phone         String?
-  qualification String
-  resumeLink    String
-  portfolio     String?
-  github        String?
-  linkedin      String?
-  skills        String
-  experience    String?
-  project       String?
-  whyJoin       String
-  photoUrl      String?
-  isSelected    Boolean  @default(false)
-  selectedAt    DateTime?
-  status        String   @default("pending") // pending, selected, rejected
-  adminNotes    String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
 }
