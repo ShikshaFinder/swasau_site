@@ -54,7 +54,6 @@ model Request {
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   analysis Analysis?
 }
-
 model Analysis {
   id          Int      @id @default(autoincrement())
   requestId   Int      @unique
