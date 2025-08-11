@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
 
     console.error("Error creating intern application:", error);
     return NextResponse.json(
-      { error: "Failed to submit application" },
+      { error: "Failed to submit application", details: error },
       { status: 500 }
     );
   }
