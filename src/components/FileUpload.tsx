@@ -12,7 +12,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
-import { Lock, Loader2, Upload, Link as LinkIcon, CheckCircle } from "lucide-react";
+import {
+  Lock,
+  Loader2,
+  Upload,
+  Link as LinkIcon,
+  CheckCircle,
+} from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
@@ -24,8 +30,8 @@ const validateGoogleDriveUrl = (url: string): boolean => {
     /^https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/,
     /^https:\/\/docs\.google\.com\/presentation\/d\/([a-zA-Z0-9-_]+)/,
   ];
-  
-  return patterns.some(pattern => pattern.test(url));
+
+  return patterns.some((pattern) => pattern.test(url));
 };
 
 // Extract file ID from Google Drive URL
@@ -38,30 +44,39 @@ const extractFileId = (url: string): string | null => {
 const convertToShareableUrl = (url: string): string => {
   const fileId = extractFileId(url);
   if (!fileId) return url;
-  
+
   return `https://drive.google.com/file/d/${fileId}/view?usp=sharing`;
 };
 
 interface FileUploadProps {
-  onFileSubmit?: (fileData: { url: string; type: string; name: string }) => void;
+  onFileSubmit?: (fileData: {
+    url: string;
+    type: string;
+    name: string;
+  }) => void;
   accept?: string;
   title?: string;
   description?: string;
 }
 
-export default function FileUpload({ 
-  onFileSubmit, 
-  accept = "application/pdf,image/*,.doc,.docx", 
+export default function FileUpload({
+  onFileSubmit,
+  accept = "application/pdf,image/*,.doc,.docx",
   title = "File Upload",
-  description = "Upload your file or provide a Google Drive link"
+  description = "Upload your file or provide a Google Drive link",
 }: FileUploadProps) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [driveUrl, setDriveUrl] = useState("");
   const [fileName, setFileName] = useState("");
   const [fileType, setFileType] = useState("document");
   const [uploadMethod, setUploadMethod] = useState<"drive" | "upload">("drive");
   const [submitResult, setSubmitResult] = useState<any>(null);
+  const [uploadResult, setUploadResult] = useState<any>(null);
+  const [analyzeResult, setAnalyzeResult] = useState<any>(null);
+  const [scanStatus, setScanStatus] = useState<any>(null);
+  const [scanResult, setScanResult] = useState<any>(null);
 
   const handleLogin = async () => {
     try {
@@ -112,7 +127,7 @@ export default function FileUpload({
         url: shareableUrl,
         type: fileType,
         name: fileName,
-        source: "google_drive"
+        source: "google_drive",
       };
 
       // Submit to backend or call callback
@@ -129,7 +144,7 @@ export default function FileUpload({
         });
 
         const result = await response.json();
-        
+
         if (response.ok) {
           setSubmitResult(result);
           toast.success("File submitted successfully!");
@@ -148,6 +163,9 @@ export default function FileUpload({
       setIsSubmitting(false);
     }
   };
+
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const files = event.target.files;
     if (!files || files.length !== 2) {
@@ -169,7 +187,7 @@ export default function FileUpload({
       return;
     }
 
-    setIsUploading(true);
+    setIsSubmitting(true);
     try {
       const formData = new FormData();
       formData.append("captured_data.txt", capturedDataFile);
@@ -182,7 +200,7 @@ export default function FileUpload({
 
       if (response.ok) {
         const result = await response.json();
-        setUploadResult(result);
+        setSubmitResult(result);
         alert("Files uploaded successfully!");
       } else {
         const error = await response.json();
@@ -192,7 +210,7 @@ export default function FileUpload({
       console.error("Upload error:", error);
       alert("Upload failed!");
     } finally {
-      setIsUploading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -357,11 +375,11 @@ Session: test-session-123`;
                   type="file"
                   multiple
                   accept=".txt,.json"
-                  onChange={handleFileUpload}
-                  disabled={isUploading}
+                  onChange={handleFileChange}
+                  disabled={isSubmitting}
                   className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                 />
-                {isUploading && (
+                {isSubmitting && (
                   <p className="text-sm text-blue-600">Uploading...</p>
                 )}
                 {uploadResult && (

@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { Button } from "@/components/ui/button";
