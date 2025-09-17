@@ -11,14 +11,14 @@ export default function InternshipPage() {
       <section className="pt-20 pb-12 bg-gradient-to-br from-background via-white to-accent/10">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-            Join Our Team
+            <span className="font-black">Join Our Team</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Work on cutting-edge embedded systems, IoT projects, and innovative
             technology solutions
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-            <span>• Hands-on experience with real projects</span>
+            <span>• Hands-on experience with real world projects</span>
             <span>• Mentorship from industry experts</span>
             <span>• Flexible work arrangements</span>
             <span>• Potential for full-time opportunities</span>
@@ -30,11 +30,11 @@ export default function InternshipPage() {
       <InternshipForm />
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-r from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              What You'll Gain
+              <span className="font-black">What You'll Gain</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Comprehensive learning experience in embedded systems and IoT
@@ -48,7 +48,7 @@ export default function InternshipPage() {
                 <span className="text-2xl">🔧</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">
-                Practical Experience
+                Hands-on experience with real world projects
               </h3>
               <p className="text-muted-foreground">
                 Work on real-world projects with actual hardware and software

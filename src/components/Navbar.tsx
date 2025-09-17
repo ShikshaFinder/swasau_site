@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Shield, Menu, X, ArrowRight } from "lucide-react";
+import { Shield, Menu, X, ArrowRight, User, LogOut } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user, loading, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,7 @@ export function Navbar() {
   }, []);
 
   const navItems = [
+    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
@@ -46,12 +49,14 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <Shield className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">
-              SWASAU Technology
-            </span>
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                <Shield className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold text-foreground">
+                SWASAU Technology
+              </span>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -71,28 +76,69 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/contact">
-              <Button
-                variant="ghost"
-                className="text-muted-foreground hover:text-primary"
-              >
-                Contact Us
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button className="group relative overflow-hidden">
-                <span className="relative z-10 flex items-center gap-2">
-                  Get a Quote
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-              </Button>
-            </Link>
+            {!loading && (
+              <>
+                {user ? (
+                  // Authenticated user menu
+                  <div className="flex items-center gap-4">
+                    <Link href="/dashboard">
+                      <Button
+                        variant="ghost"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        <User className="w-4 h-4 mr-2" />
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <div className="text-sm text-muted-foreground">
+                      Welcome, {user.name}
+                    </div>
+                    <Button
+                      variant="outline"
+                      onClick={logout}
+                      className="text-muted-foreground hover:text-primary"
+                    >
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Logout
+                    </Button>
+                  </div>
+                ) : (
+                  // Guest user buttons
+                  <>
+                    <Link href="/contact">
+                      <Button
+                        variant="ghost"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Contact Us
+                      </Button>
+                    </Link>
+                    <Link href="/login">
+                      <Button
+                        variant="outline"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                    <Link href="/contact">
+                      <Button className="group relative overflow-hidden">
+                        <span className="relative z-10 flex items-center gap-2">
+                          Get a Quote
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                        </span>
+                        <motion.div
+                          className="absolute inset-0 bg-white/20"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: "100%" }}
+                          transition={{ duration: 0.6 }}
+                        />
+                      </Button>
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}

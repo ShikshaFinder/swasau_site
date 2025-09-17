@@ -14,6 +14,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useState } from "react";
+import { validatePhoneNumber } from "@/lib/utils";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -25,9 +26,21 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate phone number if provided
+    if (formData.phone) {
+      const phoneValidation = validatePhoneNumber(formData.phone);
+      if (!phoneValidation.isValid) {
+        setPhoneError(phoneValidation.error || "Invalid phone number");
+        return;
+      }
+    }
+
+    setPhoneError("");
     setIsSubmitting(true);
 
     // Simulate form submission
@@ -51,10 +64,16 @@ export default function ContactPage() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Clear phone error when user starts typing
+    if (name === "phone") {
+      setPhoneError("");
+    }
   };
 
   const contactInfo = [
@@ -196,9 +215,16 @@ export default function ContactPage() {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="+91-9876543210"
+                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent ${
+                            phoneError ? "border-red-500" : "border-border"
+                          }`}
+                          placeholder="9876543210"
                         />
+                        {phoneError && (
+                          <p className="text-sm text-red-600 mt-1">
+                            {phoneError}
+                          </p>
+                        )}
                       </div>
                       <div>
                         <label

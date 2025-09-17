@@ -133,8 +133,11 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
               >
-                Custom Embedded Solutions
-                <span className="gradient-text"> For Every Need</span>
+                <span className="font-black">Our Services</span>
+                <span className="gradient-text">
+                  {" "}
+                  - Custom Embedded Solutions For Every Need
+                </span>
               </motion.h1>
 
               <motion.p
@@ -154,8 +157,8 @@ export default function ServicesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {services.map((service, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <Card className="group hover:shadow-xl transition-all duration-300 border border-border">
-                  <CardHeader>
+                <Card className="group hover:shadow-xl transition-all duration-300 border border-border h-full">
+                  <CardHeader className="pb-4">
                     <div
                       className={`w-12 h-12 ${service.bgColor} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                     >
@@ -165,8 +168,8 @@ export default function ServicesPage() {
                       {service.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                  <CardContent className="flex flex-col h-full">
+                    <p className="text-muted-foreground mb-4 flex-grow">
                       {service.description}
                     </p>
                     <ul className="space-y-2 mb-6">
@@ -182,7 +185,7 @@ export default function ServicesPage() {
                     </ul>
                     <Button
                       variant="outline"
-                      className="w-full group/btn"
+                      className="w-full group/btn mt-auto"
                       asChild
                     >
                       <Link href="/contact">

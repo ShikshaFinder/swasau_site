@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
@@ -9,17 +11,57 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Lock, Loader2 } from "lucide-react";
+import { Alert } from "@/components/ui/alert";
+import { Lock, Loader2, Upload, Link as LinkIcon, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
-export default function FileUpload() {
+// Google Drive URL validation
+const validateGoogleDriveUrl = (url: string): boolean => {
+  const patterns = [
+    /^https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9-_]+)/,
+    /^https:\/\/docs\.google\.com\/document\/d\/([a-zA-Z0-9-_]+)/,
+    /^https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/,
+    /^https:\/\/docs\.google\.com\/presentation\/d\/([a-zA-Z0-9-_]+)/,
+  ];
+  
+  return patterns.some(pattern => pattern.test(url));
+};
+
+// Extract file ID from Google Drive URL
+const extractFileId = (url: string): string | null => {
+  const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
+  return match ? match[1] : null;
+};
+
+// Convert to shareable Google Drive URL
+const convertToShareableUrl = (url: string): string => {
+  const fileId = extractFileId(url);
+  if (!fileId) return url;
+  
+  return `https://drive.google.com/file/d/${fileId}/view?usp=sharing`;
+};
+
+interface FileUploadProps {
+  onFileSubmit?: (fileData: { url: string; type: string; name: string }) => void;
+  accept?: string;
+  title?: string;
+  description?: string;
+}
+
+export default function FileUpload({ 
+  onFileSubmit, 
+  accept = "application/pdf,image/*,.doc,.docx", 
+  title = "File Upload",
+  description = "Upload your file or provide a Google Drive link"
+}: FileUploadProps) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [uploadResult, setUploadResult] = useState<any>(null);
-  const [analyzeResult, setAnalyzeResult] = useState<any>(null);
-  const [scanStatus, setScanStatus] = useState<any>(null);
-  const [scanResult, setScanResult] = useState<any>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [driveUrl, setDriveUrl] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [fileType, setFileType] = useState("document");
+  const [uploadMethod, setUploadMethod] = useState<"drive" | "upload">("drive");
+  const [submitResult, setSubmitResult] = useState<any>(null);
 
   const handleLogin = async () => {
     try {
@@ -36,18 +78,76 @@ export default function FileUpload() {
 
       if (response.ok) {
         setIsLoggedIn(true);
-        alert("Login successful!");
+        toast.success("Login successful!");
       } else {
-        alert("Login failed!");
+        toast.error("Login failed!");
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("Login failed!");
+      toast.error("Login failed!");
     }
   };
 
-  const handleFileUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>
+  const handleGoogleDriveSubmit = async () => {
+    if (!driveUrl.trim()) {
+      toast.error("Please provide a Google Drive URL");
+      return;
+    }
+
+    if (!validateGoogleDriveUrl(driveUrl)) {
+      toast.error("Please provide a valid Google Drive URL");
+      return;
+    }
+
+    if (!fileName.trim()) {
+      toast.error("Please provide a file name");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const shareableUrl = convertToShareableUrl(driveUrl);
+      const fileData = {
+        url: shareableUrl,
+        type: fileType,
+        name: fileName,
+        source: "google_drive"
+      };
+
+      // Submit to backend or call callback
+      if (onFileSubmit) {
+        onFileSubmit(fileData);
+      } else {
+        // Default submission to API
+        const response = await fetch("/api/files/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(fileData),
+        });
+
+        const result = await response.json();
+        
+        if (response.ok) {
+          setSubmitResult(result);
+          toast.success("File submitted successfully!");
+          // Reset form
+          setDriveUrl("");
+          setFileName("");
+          setFileType("document");
+        } else {
+          toast.error(result.error || "Submission failed");
+        }
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Failed to submit file");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   ) => {
     const files = event.target.files;
     if (!files || files.length !== 2) {

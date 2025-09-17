@@ -8,22 +8,32 @@ export function middleware(request: NextRequest) {
   // Skip middleware for public routes
   if (
     pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/api/signup") ||
+    pathname.startsWith("/api/login") ||
+    pathname.startsWith("/api/verify-email") ||
+    pathname.startsWith("/api/forgot-password") ||
+    pathname.startsWith("/api/waitlist") ||
     pathname.startsWith("/_next") ||
-    pathname.startsWith("/static") ||
+    pathname.startsWith("/favicon") ||
     pathname === "/" ||
-    pathname === "/login" ||
-    pathname === "/signup" ||
     pathname === "/about" ||
-    pathname === "/contact" ||
     pathname === "/services" ||
     pathname === "/projects" ||
     pathname === "/blog" ||
-    pathname.startsWith("/public")
+    pathname === "/contact" ||
+    pathname === "/internship" ||
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/auth/login" ||
+    pathname === "/auth/signup" ||
+    pathname === "/auth/forgot-password" ||
+    pathname === "/verify-email" ||
+    pathname === "/waitlist"
   ) {
     return NextResponse.next();
   }
 
-  // Get user from request (in real app, this would decode JWT)
+  // Get user from request (JWT-based authentication)
   const user = getUserFromRequest(request);
 
   // Redirect to login if no user
@@ -33,15 +43,15 @@ export function middleware(request: NextRequest) {
 
   // Role-based access control for dashboard routes
   if (pathname.startsWith("/dashboard")) {
-    if (pathname.startsWith("/dashboard/admin") && user.role !== "ADMIN") {
+    if (pathname.startsWith("/dashboard/admin") && !hasRole(user, "ADMIN")) {
       return NextResponse.redirect(new URL("/unauthorized", request.url));
     }
 
-    if (pathname.startsWith("/dashboard/client") && user.role !== "CLIENT") {
+    if (pathname.startsWith("/dashboard/client") && !hasRole(user, "CLIENT")) {
       return NextResponse.redirect(new URL("/unauthorized", request.url));
     }
 
-    if (pathname.startsWith("/dashboard/intern") && user.role !== "INTERN") {
+    if (pathname.startsWith("/dashboard/intern") && !hasRole(user, "INTERN")) {
       return NextResponse.redirect(new URL("/unauthorized", request.url));
     }
   }
@@ -53,7 +63,7 @@ export function middleware(request: NextRequest) {
       (pathname.startsWith("/api/admin") ||
         pathname.startsWith("/api/assignments") ||
         pathname.startsWith("/api/clients")) &&
-      user.role !== "ADMIN"
+      !hasRole(user, "ADMIN")
     ) {
       return NextResponse.json(
         { error: "Unauthorized access" },
@@ -63,8 +73,9 @@ export function middleware(request: NextRequest) {
 
     // Add user info to headers for API routes
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-user-id", user.id.toString());
+    requestHeaders.set("x-user-id", user.userId.toString());
     requestHeaders.set("x-user-role", user.role);
+    requestHeaders.set("x-user-email", user.email);
 
     return NextResponse.next({
       request: {

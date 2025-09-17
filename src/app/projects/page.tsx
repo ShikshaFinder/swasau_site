@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Wifi, 
-  CloudRain, 
-  Building, 
-  Hash, 
+import {
+  Wifi,
+  CloudRain,
+  Building,
+  Hash,
   Heart,
   ArrowRight,
   MapPin,
   Cpu,
-  Zap
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -23,86 +23,92 @@ export default function ProjectsPage() {
       icon: Wifi,
       title: "Wireless Data Transmission System for RS232 to USB",
       industry: "Retail / Industrial Automation",
-      description: "A plug-and-play module that converts RS232 serial data to USB with real-time wireless transmission capabilities.",
+      description:
+        "A plug-and-play module that converts RS232 serial data to USB with real-time wireless transmission capabilities.",
       highlights: [
         "Converts RS232 serial data to USB",
         "Real-time wireless data transmission",
-        "Plug-and-play module"
+        "Plug-and-play module",
       ],
       techUsed: ["ESP32", "UART", "USB Host Shield"],
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
     },
     {
       icon: CloudRain,
       title: "Industrial Weather Monitoring System",
       industry: "Agriculture / Environment",
-      description: "A rugged outdoor weather monitoring system with multi-sensor input for comprehensive environmental data collection.",
+      description:
+        "A rugged outdoor weather monitoring system with multi-sensor input for comprehensive environmental data collection.",
       highlights: [
         "Multi-sensor input: Temp, Humidity, Wind, Rain",
         "Rugged outdoor enclosure",
-        "Real-time data collection"
+        "Real-time data collection",
       ],
       techUsed: ["STM32", "RP2040", "RS485"],
       color: "text-secondary",
-      bgColor: "bg-secondary/10"
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Building,
       title: "Lift Dot Matrix Display",
       industry: "Building Automation",
-      description: "Custom dot-matrix display system for elevator floor and status indicators with advanced display driver technology.",
+      description:
+        "Custom dot-matrix display system for elevator floor and status indicators with advanced display driver technology.",
       highlights: [
         "Floor and status indicators",
         "Custom dot-matrix display driver",
-        "Real-time updates"
+        "Real-time updates",
       ],
       techUsed: ["Custom Display Driver", "Microcontroller"],
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
     },
     {
       icon: Hash,
       title: "Wireless Token Display System",
       industry: "Hospitals / Service Centers",
-      description: "Multi-point display system with central control for queue management in healthcare and service environments.",
+      description:
+        "Multi-point display system with central control for queue management in healthcare and service environments.",
       highlights: [
         "Multi-point display with central control",
         "Wireless updates using RF/Bluetooth",
-        "Audio prompt integration"
+        "Audio prompt integration",
       ],
       techUsed: ["NRF24L01", "STM8", "7-Segment"],
       color: "text-secondary",
-      bgColor: "bg-secondary/10"
+      bgColor: "bg-secondary/10",
     },
     {
       icon: Heart,
       title: "Medical Device for Disease Detection",
       industry: "Healthcare",
-      description: "Custom embedded medical device for accurate and fast disease detection with advanced diagnostic capabilities.",
+      description:
+        "Custom embedded medical device for accurate and fast disease detection with advanced diagnostic capabilities.",
       highlights: [
         "Custom embedded medical device",
         "Accurate and fast disease detection",
-        "Medical-grade components"
+        "Medical-grade components",
       ],
       techUsed: ["Medical Sensors", "Embedded System"],
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
     },
     {
       icon: MapPin,
       title: "Pet Health & Location Tracking Device",
       industry: "Consumer / IoT",
-      description: "Comprehensive pet tracking solution with health monitoring and GPS location tracking capabilities.",
+      description:
+        "Comprehensive pet tracking solution with health monitoring and GPS location tracking capabilities.",
       highlights: [
         "Tracks pet location with GPS",
         "Monitors activity & temperature",
-        "Companion mobile app for insights"
+        "Companion mobile app for insights",
       ],
       techUsed: ["GPS Module", "NB-IoT", "Accelerometer", "ESP32-C6"],
       color: "text-secondary",
-      bgColor: "bg-secondary/10"
-    }
+      bgColor: "bg-secondary/10",
+    },
   ];
 
   return (
@@ -129,8 +135,11 @@ export default function ProjectsPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
               >
-                Showcasing Our
-                <span className="gradient-text"> Innovation</span>
+                <span className="font-black">Our Projects</span>
+                <span className="gradient-text">
+                  {" "}
+                  - Showcasing Innovation Across Industries
+                </span>
               </motion.h1>
 
               <motion.p
@@ -139,7 +148,9 @@ export default function ProjectsPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl text-muted-foreground max-w-3xl mx-auto"
               >
-                Explore our portfolio of custom embedded solutions across various industries, from industrial automation to healthcare and consumer IoT.
+                Explore our portfolio of custom embedded solutions across
+                various industries, from industrial automation to healthcare and
+                consumer IoT.
               </motion.p>
             </div>
           </ScrollReveal>
@@ -148,43 +159,60 @@ export default function ProjectsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {projects.map((project, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <Card className="group hover:shadow-xl transition-all duration-300 border border-border h-full">
-                  <CardHeader>
-                    <div className={`w-12 h-12 ${project.bgColor} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <Card
+                  className="group hover:shadow-xl transition-all duration-300 border border-border h-full cursor-pointer"
+                  onClick={() =>
+                    window.open(
+                      `/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`,
+                      "_blank"
+                    )
+                  }
+                >
+                  <CardHeader className="pb-4">
+                    <div
+                      className={`w-12 h-12 ${project.bgColor} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    >
                       <project.icon className={`w-6 h-6 ${project.color}`} />
                     </div>
-                    <CardTitle className="text-xl font-semibold text-foreground mb-2">
+                    <CardTitle className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </CardTitle>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Cpu className="w-4 h-4" />
-                      <span>{project.industry}</span>
+                      <span className="font-medium">{project.industry}</span>
                     </div>
                   </CardHeader>
                   <CardContent className="flex flex-col h-full">
-                    <p className="text-muted-foreground mb-4 flex-grow">
+                    <p className="text-muted-foreground mb-6 flex-grow text-base leading-relaxed">
                       {project.description}
                     </p>
-                    
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-foreground mb-2">Highlights:</h4>
-                      <ul className="space-y-1">
+
+                    <div className="mb-6">
+                      <h4 className="font-bold text-foreground mb-3 text-lg">
+                        Highlights:
+                      </h4>
+                      <ul className="space-y-2">
                         {project.highlights.map((highlight, highlightIndex) => (
-                          <li key={highlightIndex} className="flex items-center text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></div>
-                            {highlight}
+                          <li
+                            key={highlightIndex}
+                            className="flex items-start text-sm text-muted-foreground"
+                          >
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                            <span>{highlight}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="font-semibold text-foreground mb-2">Tech Used:</h4>
+                      <h4 className="font-bold text-foreground mb-3 text-lg">
+                        Tech Used:
+                      </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.techUsed.map((tech, techIndex) => (
-                          <span 
+                          <span
                             key={techIndex}
-                            className="px-3 py-1 bg-muted rounded-full text-xs font-medium text-foreground"
+                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium border border-primary/20"
                           >
                             {tech}
                           </span>
@@ -192,8 +220,8 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="w-full group/btn mt-auto"
                       asChild
                     >
@@ -223,10 +251,12 @@ export default function ProjectsPage() {
                   Inspired by Our Work?
                 </h3>
                 <p className="text-muted-foreground mb-6 max-w-2xl">
-                  Let's create something amazing together. Whether it's similar to these projects or something completely new, we're here to bring your ideas to life.
+                  Let's create something amazing together. Whether it's similar
+                  to these projects or something completely new, we're here to
+                  bring your ideas to life.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
+                  <Button
                     size="lg"
                     className="group relative overflow-hidden"
                     asChild
@@ -244,14 +274,8 @@ export default function ProjectsPage() {
                       />
                     </Link>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    asChild
-                  >
-                    <Link href="/services">
-                      View Our Services
-                    </Link>
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href="/services">View Our Services</Link>
                   </Button>
                 </div>
               </div>
@@ -261,4 +285,4 @@ export default function ProjectsPage() {
       </section>
     </main>
   );
-} 
+}

@@ -141,8 +141,11 @@ export function Features() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
             >
-              Custom Embedded Solutions
-              <span className="gradient-text"> For Every Industry</span>
+              <span className="font-black">Our Expertise</span>
+              <span className="gradient-text">
+                {" "}
+                - Custom Embedded Solutions For Every Industry
+              </span>
             </motion.h2>
 
             <motion.p
@@ -302,41 +305,43 @@ export function Features() {
         </div>
 
         {/* Why Choose Us */}
-        <div className="mt-20">
+        <div className="mt-20 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-8">
           <ScrollReveal>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
               Why Choose Us
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
-                <h3 className="text-xl font-semibold mb-2">
+              <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20 shadow-sm text-center">
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🏆</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-primary">
                   Proven Track Record
                 </h3>
-                <p className="text-muted-foreground">
-                  Years of successful projects and satisfied clients.
-                </p>
               </div>
-              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
-                <h3 className="text-xl font-semibold mb-2">Fast Turnaround</h3>
-                <p className="text-muted-foreground">
-                  Rapid prototyping and delivery for your time-sensitive needs.
-                </p>
-              </div>
-              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
-                <h3 className="text-xl font-semibold mb-2">
-                  Certified Engineers
+              <div className="p-6 rounded-2xl bg-secondary/10 border border-secondary/20 shadow-sm text-center">
+                <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">⚡</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-secondary">
+                  Fast Turnaround
                 </h3>
-                <p className="text-muted-foreground">
-                  Skilled, certified professionals on every project.
-                </p>
               </div>
-              <div className="p-6 rounded-2xl bg-white border border-border shadow-sm text-center">
-                <h3 className="text-xl font-semibold mb-2">
+              <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20 shadow-sm text-center">
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">👨‍💻</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-primary">
+                  Expert Mentorship
+                </h3>
+              </div>
+              <div className="p-6 rounded-2xl bg-secondary/10 border border-secondary/20 shadow-sm text-center">
+                <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🔧</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-secondary">
                   Custom-Built Solutions
                 </h3>
-                <p className="text-muted-foreground">
-                  Tailored hardware and software for your unique requirements.
-                </p>
               </div>
             </div>
           </ScrollReveal>
@@ -400,8 +405,14 @@ export function Features() {
                   scale-up engineering competence for creating a sustainable
                   future.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Visit them
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a
+                    href="https://www.aartigroup.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit them
+                  </a>
                 </Button>
               </div>
               {/* Client 2 */}
@@ -415,8 +426,14 @@ export function Features() {
                   accurate environmental data using patented e-Breathing
                   Technology.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Visit them
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a
+                    href="https://oizom.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit them
+                  </a>
                 </Button>
               </div>
               {/* Client 3 */}
@@ -429,8 +446,14 @@ export function Features() {
                   IGiS—an indigenous technology uniting GIS, Image Processing,
                   Photogrammetry, and CAD.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Visit them
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a
+                    href="https://www.scanpointgeomatics.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit them
+                  </a>
                 </Button>
               </div>
               {/* Client 4 */}
@@ -443,8 +466,14 @@ export function Features() {
                   its range of air pollution monitoring instruments. Vast
                   experience in environmental monitoring.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Visit them
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a
+                    href="https://vaibhavequipment.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit them
+                  </a>
                 </Button>
               </div>
               {/* Client 5 */}
@@ -458,8 +487,14 @@ export function Features() {
                   experience through futuristic curriculum and advanced
                   technological interface.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Visit them
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a
+                    href="https://silveroakuni.ac.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit them
+                  </a>
                 </Button>
               </div>
               {/* Client 6 */}
@@ -472,41 +507,19 @@ export function Features() {
                   Innovation Mission (AIM), NITI Aayog, Govt. of India. AIC-LMCP
                   Foundation is a non-profit incubator.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Visit them
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <a
+                    href="https://aim.gov.in/atal-innovation-mission/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit them
+                  </a>
                 </Button>
               </div>
             </div>
           </ScrollReveal>
         </div>
-
-        {/* Bottom CTA */}
-        <ScrollReveal delay={0.8}>
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-block p-8 rounded-3xl bg-gradient-to-r from-primary/5 to-secondary/5 backdrop-blur-sm border border-border shadow-lg">
-              <h3 className="text-2xl font-bold mb-4 text-foreground">
-                Ready to Build Your Custom Solution?
-              </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl">
-                Join dozens of companies who have already transformed their
-                ideas into reality with our custom embedded solutions and IoT
-                expertise.
-              </p>
-              <motion.button
-                className="px-8 py-3 bg-primary text-white rounded-2xl font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get a Quote 🚀
-              </motion.button>
-            </div>
-          </motion.div>
-        </ScrollReveal>
       </div>
     </section>
   );

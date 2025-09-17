@@ -84,11 +84,10 @@ export function Testimonials() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
-              Technology Team Success Stories
+              Success Stories
             </h2>
             <p className="text-xl text-muted-foreground mb-4">
-              What Our{" "}
-              <span className="gradient-text">Technology Teams Say</span>
+              What Our <span className="gradient-text">Clients Say</span>
             </p>
             <p className="text-muted-foreground max-w-3xl mx-auto">
               Real stories from technology professionals who have transformed
@@ -182,15 +181,15 @@ export function Testimonials() {
 
         {/* Stats */}
         <ScrollReveal delay={0.6}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
             <motion.div
               className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-3xl font-bold text-primary mb-2">5+</div>
+              <div className="text-3xl font-bold text-primary mb-2">50+</div>
               <div className="text-sm text-muted-foreground">
-                Technology Teams
+                Projects Completed
               </div>
             </motion.div>
 
@@ -200,19 +199,8 @@ export function Testimonials() {
               transition={{ duration: 0.2 }}
             >
               <div className="text-3xl font-bold text-secondary mb-2">
-                4.9/5
+                99.9%
               </div>
-              <div className="text-sm text-muted-foreground">
-                Average Rating
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="text-center p-6 rounded-2xl bg-white shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
               <div className="text-sm text-muted-foreground">Uptime</div>
             </motion.div>
 
@@ -221,7 +209,7 @@ export function Testimonials() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="text-3xl font-bold text-secondary mb-2">
+              <div className="text-3xl font-bold text-primary mb-2">
                 &lt;2 days
               </div>
               <div className="text-sm text-muted-foreground">Response Time</div>

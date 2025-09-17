@@ -163,8 +163,11 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
               >
-                Creating Dream Solutions
-                <span className="gradient-text"> Since Day One</span>
+                <span className="font-black">About Us</span>
+                <span className="gradient-text">
+                  {" "}
+                  - Creating Dream Solutions Since Day One
+                </span>
               </motion.h1>
 
               <motion.p
@@ -285,41 +288,49 @@ export default function AboutPage() {
           <ScrollReveal delay={0.8}>
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
-                Meet The Founders
+                <span className="font-black">Meet The Founders</span>
               </h2>
-              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-                {team.slice(0, 2).map((member, index) => (
-                  <Card key={index} className="border border-border">
-                    <CardHeader className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">
-                        {member.avatar}
-                      </div>
-                      <CardTitle className="text-xl font-semibold text-foreground">
-                        {member.name}
-                      </CardTitle>
-                      <p className="text-primary font-medium">{member.role}</p>
-                    </CardHeader>
-                    <CardContent className="text-center">
-                      <p className="text-muted-foreground mb-4">
-                        {member.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {member.expertise.map((skill, skillIndex) => (
-                          <span
-                            key={skillIndex}
-                            className="px-3 py-1 bg-muted rounded-full text-xs font-medium text-foreground"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+              <div className="relative bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl p-8 mb-16">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-3xl opacity-50"></div>
+                <div className="relative z-10 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                  {team.slice(0, 2).map((member, index) => (
+                    <Card
+                      key={index}
+                      className="border border-border bg-white/80 backdrop-blur-sm"
+                    >
+                      <CardHeader className="text-center">
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">
+                          {member.avatar}
+                        </div>
+                        <CardTitle className="text-xl font-semibold text-foreground">
+                          {member.name}
+                        </CardTitle>
+                        <p className="text-primary font-medium">
+                          {member.role}
+                        </p>
+                      </CardHeader>
+                      <CardContent className="text-center">
+                        <p className="text-muted-foreground mb-4">
+                          {member.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {member.expertise.map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="px-3 py-1 bg-muted rounded-full text-xs font-medium text-foreground"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
 
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
-                Our Team
+                <span className="font-black">Our Team</span>
               </h2>
               <p className="text-muted-foreground mb-8 max-w-3xl mx-auto">
                 At Swasau Technologies, we are proud to be fueled by a team of

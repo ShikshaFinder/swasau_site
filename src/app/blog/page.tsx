@@ -17,6 +17,9 @@ import {
 import Link from "next/link";
 
 export default function BlogPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [email, setEmail] = useState("");
+
   const blogPosts = [
     {
       title: "Getting Started with STM32 Development",
@@ -88,12 +91,42 @@ export default function BlogPage() {
   ];
 
   const categories = [
-    { name: "All", count: blogPosts.length, active: true },
-    { name: "Tutorial", count: 2, active: false },
-    { name: "Industry News", count: 2, active: false },
-    { name: "Case Study", count: 1, active: false },
-    { name: "Technical", count: 1, active: false },
+    { name: "All", count: blogPosts.length },
+    {
+      name: "Tutorial",
+      count: blogPosts.filter((post) => post.category === "Tutorial").length,
+    },
+    {
+      name: "Industry News",
+      count: blogPosts.filter((post) => post.category === "Industry News")
+        .length,
+    },
+    {
+      name: "Case Study",
+      count: blogPosts.filter((post) => post.category === "Case Study").length,
+    },
+    {
+      name: "Technical",
+      count: blogPosts.filter((post) => post.category === "Technical").length,
+    },
   ];
+
+  const filteredPosts =
+    selectedCategory === "All"
+      ? blogPosts
+      : blogPosts.filter((post) => post.category === selectedCategory);
+
+  const handleCategoryClick = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+  };
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      alert(`Thank you for subscribing with email: ${email}`);
+      setEmail("");
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white pt-20">
@@ -142,9 +175,12 @@ export default function BlogPage() {
               {categories.map((category, index) => (
                 <Button
                   key={index}
-                  variant={category.active ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category.name ? "default" : "outline"
+                  }
                   size="sm"
                   className="rounded-full"
+                  onClick={() => handleCategoryClick(category.name)}
                 >
                   {category.name} ({category.count})
                 </Button>
@@ -200,7 +236,9 @@ export default function BlogPage() {
                           ))}
                         </div>
                         <Button className="group" asChild>
-                          <Link href="#">
+                          <Link
+                            href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}
+                          >
                             <span className="flex items-center gap-2">
                               Read More
                               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -224,7 +262,7 @@ export default function BlogPage() {
 
           {/* Blog Posts Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {blogPosts
+            {filteredPosts
               .filter((post) => !post.featured)
               .map((post, index) => (
                 <ScrollReveal key={index} delay={index * 0.1}>
@@ -278,7 +316,9 @@ export default function BlogPage() {
                         className="w-full group/btn mt-auto"
                         asChild
                       >
-                        <Link href="#">
+                        <Link
+                          href={`/blog/${post.title.toLowerCase().replace(/\s+/g, "-")}`}
+                        >
                           <span className="flex items-center gap-2">
                             Read More
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -307,13 +347,23 @@ export default function BlogPage() {
                   Subscribe to our newsletter for the latest insights,
                   tutorials, and industry updates delivered to your inbox.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <form
+                  onSubmit={handleSubscribe}
+                  className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+                >
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     className="flex-1 px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    required
                   />
-                  <Button size="lg" className="group relative overflow-hidden">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="group relative overflow-hidden"
+                  >
                     <span className="relative z-10 flex items-center gap-2">
                       Subscribe
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -325,7 +375,7 @@ export default function BlogPage() {
                       transition={{ duration: 0.6 }}
                     />
                   </Button>
-                </div>
+                </form>
               </div>
             </motion.div>
           </ScrollReveal>

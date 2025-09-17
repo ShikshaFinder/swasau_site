@@ -7,32 +7,32 @@ import { Shield, Github, Twitter, Linkedin, Mail, Globe } from "lucide-react";
 export function Footer() {
   const footerLinks = {
     product: [
-      { name: "Embedded Hardware Design", href: "#" },
-      { name: "Firmware Development", href: "#" },
-      { name: "IoT Product Development", href: "#" },
-      { name: "Prototyping", href: "#" },
-      { name: "Industrial Automation", href: "#" },
+      { name: "Embedded Hardware Design", href: "/services" },
+      { name: "Firmware Development", href: "/services" },
+      { name: "IoT Product Development", href: "/services" },
+      { name: "Prototyping", href: "/services" },
+      { name: "Industrial Automation", href: "/services" },
     ],
     solutions: [
-      { name: "Wireless/Bluetooth/NB-IoT Integration", href: "#" },
-      { name: "End-to-End Product Engineering", href: "#" },
-      { name: "Custom Solutions", href: "#" },
-      { name: "Consulting", href: "#" },
-      { name: "Support", href: "#" },
+      { name: "Wireless/Bluetooth/NB-IoT Integration", href: "/services" },
+      { name: "End-to-End Product Engineering", href: "/services" },
+      { name: "Custom Solutions", href: "/services" },
+      { name: "Consulting", href: "/contact" },
+      { name: "Support", href: "/contact" },
     ],
     resources: [
-      { name: "Blog / Insights", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Newsletter", href: "#" },
-      { name: "Downloads", href: "#" },
-      { name: "FAQ", href: "#" },
+      { name: "Blog / Insights", href: "/blog" },
+      { name: "Careers", href: "/internship" },
+      { name: "Newsletter", href: "/blog" },
+      { name: "Downloads", href: "/contact" },
+      { name: "FAQ", href: "/contact" },
     ],
     company: [
-      { name: "About Us", href: "#" },
-      { name: "Our Projects", href: "#" },
-      { name: "Contact", href: "#" },
-      { name: "Team", href: "#" },
-      { name: "Internships", href: "#" },
+      { name: "About Us", href: "/about" },
+      { name: "Our Projects", href: "/projects" },
+      { name: "Contact", href: "/contact" },
+      { name: "Team", href: "/about" },
+      { name: "Internships", href: "/internship" },
     ],
   };
 
@@ -60,7 +60,7 @@ export function Footer() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Footer Content */}
-        <div className="py-16">
+        <div className="py-8">
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               {/* Company Info */}
