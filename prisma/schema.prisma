@@ -29,75 +29,145 @@ model User {
   apiTokens ApiToken[]
   requests  Request[]
   client    Client?
-  intern    Intern?
+  freelancer Freelancer?
+  sentMessages Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  notifications Notification[]
+  reviews   Review[] @relation("ReviewerReviews")
 }
 
 enum UserRole {
   CLIENT
-  INTERN
+  FREELANCER
   ADMIN
 }
 
 model Client {
-  id        Int      @id @default(autoincrement())
-  userId    Int      @unique
-  company   String?
-  phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+  userId          Int      @unique
+  company         String?
+  phone           String?
+  industry        String?
+  companySize     String?
+  website         String?
+  description     String?
+  registrationNumber String?
+  gstNumber       String?
+  address         String?
+  city            String?
+  state           String?
+  country         String?
+  pincode         String?
+  isVerified      Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
   
   // Relations
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   projects Project[]
+  reviews  Review[]  @relation("ClientReviews")
+  contracts Contract[]
 }
 
-model Intern {
-  id            Int      @id @default(autoincrement())
-  userId        Int?     @unique
-  name          String
-  email         String   @unique
-  phone         String?
-  qualification String
-  resumeLink    String
-  portfolio     String?
-  github        String?
-  linkedin      String?
-  skills        String // JSON string of skills array
-  experience    String?
-  project       String?
-  whyJoin       String
-  photoUrl      String?
-  isSelected    Boolean  @default(false)
-  selectedAt    DateTime?
-  status        String   @default("pending") // pending, selected, rejected
-  adminNotes    String?
-  availability  Int?     // hours per week
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+model Freelancer {
+  id                Int      @id @default(autoincrement())
+  userId            Int      @unique
+  phone             String?
+  bio               String?
+  title             String?  // Professional title
+  hourlyRate        Decimal?
+  availability      String?  // Available, Busy, Away
+  timezone          String?
+  languages         String[] // Array of languages
+  experience        String?  // Years of experience
+  education         String?
+  certifications    String[] // Array of certifications
+  portfolio         String?  // Portfolio website
+  github            String?
+  linkedin          String?
+  twitter           String?
+  website           String?
+  photoUrl          String?
+  resumeUrl         String?
+  
+  // Verification
+  isEmailVerified   Boolean  @default(false)
+  isPhoneVerified   Boolean  @default(false)
+  isIdentityVerified Boolean @default(false)
+  isBankVerified    Boolean  @default(false)
+  
+  // Bank Details (encrypted)
+  bankAccountNumber String?
+  bankName          String?
+  ifscCode          String?
+  upiId             String?
+  
+  // KYC Documents
+  aadharNumber      String?
+  panNumber         String?
+  passportNumber    String?
+  
+  // Profile completion
+  profileCompletion Int      @default(0) // Percentage
+  
+  // Status
+  status            String   @default("active") // active, suspended, banned
+  isAvailable       Boolean  @default(true)
+  
+  // Stats
+  totalEarnings     Decimal  @default(0)
+  totalProjects     Int      @default(0)
+  completedProjects Int      @default(0)
+  averageRating     Decimal  @default(0)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
   
   // Relations
-  user        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  assignments Assignment[]
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bids              Bid[]
+  contracts         Contract[]
+  reviews           Review[] @relation("FreelancerReviews")
+  portfolios        Portfolio[]
+  skills            FreelancerSkill[]
+  projects          Project[]
 }
 
 model Project {
-  id          Int           @id @default(autoincrement())
-  title       String
-  description String
-  category    ProjectCategory
-  budget      Decimal?
-  deadline    DateTime?
-  status      ProjectStatus @default(PENDING)
-  clientId    Int
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id              Int           @id @default(autoincrement())
+  title           String
+  description     String
+  category        ProjectCategory
+  subcategory     String?       // Embedded, ASIC, R&D, etc.
+  budget          Decimal?
+  budgetType      String?       // fixed, hourly, negotiable
+  deadline        DateTime?
+  status          ProjectStatus @default(PENDING)
+  clientId        Int
+  freelancerId    Int?          // Selected freelancer
+  isPublic        Boolean       @default(true)
+  isUrgent        Boolean       @default(false)
+  skillsRequired  String[]      // Array of required skills
+  experienceLevel String?       // beginner, intermediate, expert
+  timeline        String?       // project duration
+  location        String?       // remote, on-site, hybrid
+  attachments     String[]      // Array of file URLs
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
   
   // Relations
-  client      Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  assignments Assignment[]
+  client          Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  freelancer      Freelancer?   @relation(fields: [freelancerId], references: [id])
+  bids            Bid[]
+  contracts       Contract[]
+  reviews         Review[]
+  messages        Message[]
 }
 
 enum ProjectCategory {
+  EMBEDDED
+  ASIC
+  RND
   IOT
   AI
   WEBSITE
@@ -106,6 +176,8 @@ enum ProjectCategory {
   BLOCKCHAIN
   CYBERSECURITY
   DATA_ANALYTICS
+  HARDWARE
+  FIRMWARE
   OTHER
 }
 
@@ -117,18 +189,152 @@ enum ProjectStatus {
   CANCELLED
 }
 
-model Assignment {
-  id        Int      @id @default(autoincrement())
-  projectId Int
-  internId  Int
-  assignedAt DateTime @default(now())
-  notes     String?
+// New models for freelancing platform
+
+model Bid {
+  id          Int      @id @default(autoincrement())
+  projectId   Int
+  freelancerId Int
+  amount      Decimal
+  timeline    String?  // Proposed timeline
+  coverLetter String?  // Proposal description
+  status      String   @default("pending") // pending, accepted, rejected, withdrawn
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   
   // Relations
-  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  intern  Intern  @relation(fields: [internId], references: [id], onDelete: Cascade)
+  project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  freelancer  Freelancer @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
   
-  @@unique([projectId, internId])
+  @@unique([projectId, freelancerId])
+}
+
+model Contract {
+  id            Int      @id @default(autoincrement())
+  projectId     Int
+  freelancerId  Int
+  clientId      Int
+  amount        Decimal
+  startDate     DateTime
+  endDate       DateTime?
+  status        String   @default("draft") // draft, active, completed, terminated
+  terms         String?  // Contract terms
+  milestones    Json?    // Milestone details
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  project       Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  freelancer    Freelancer @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+  client        Client     @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  payments      Payment[]
+}
+
+model Review {
+  id            Int      @id @default(autoincrement())
+  projectId     Int
+  reviewerId    Int      // User who wrote the review
+  freelancerId  Int?     // Freelancer being reviewed
+  clientId      Int?     // Client being reviewed
+  revieweeType  String   // "freelancer" or "client"
+  rating        Int      // 1-5 stars
+  comment       String?
+  criteria      Json?    // Detailed criteria ratings
+  createdAt     DateTime @default(now())
+  
+  // Relations
+  project       Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  reviewer      User        @relation("ReviewerReviews", fields: [reviewerId], references: [id], onDelete: Cascade)
+  freelancer    Freelancer? @relation("FreelancerReviews", fields: [freelancerId], references: [id], onDelete: Cascade)
+  client        Client?     @relation("ClientReviews", fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model Portfolio {
+  id           Int      @id @default(autoincrement())
+  freelancerId Int
+  title        String
+  description  String?
+  imageUrl     String?
+  projectUrl   String?
+  githubUrl    String?
+  technologies String[] // Array of technologies used
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relations
+  freelancer   Freelancer @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+}
+
+model Skill {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  category    String?
+  description String?
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  freelancers FreelancerSkill[]
+}
+
+model FreelancerSkill {
+  id           Int      @id @default(autoincrement())
+  freelancerId Int
+  skillId      Int
+  level        String   @default("intermediate") // beginner, intermediate, expert
+  yearsOfExp   Int?
+  createdAt    DateTime @default(now())
+  
+  // Relations
+  freelancer   Freelancer @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+  skill        Skill      @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  
+  @@unique([freelancerId, skillId])
+}
+
+model Payment {
+  id            Int      @id @default(autoincrement())
+  contractId    Int
+  amount        Decimal
+  status        String   @default("pending") // pending, completed, failed, refunded
+  paymentMethod String?  // razorpay, stripe, etc.
+  transactionId String?
+  gatewayResponse Json?  // Payment gateway response
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  contract      Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+}
+
+model Message {
+  id          Int      @id @default(autoincrement())
+  senderId    Int
+  receiverId  Int
+  projectId   Int?
+  content     String
+  messageType String   @default("text") // text, file, image
+  fileUrl     String?
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  sender      User     @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [id], onDelete: Cascade)
+  project     Project? @relation(fields: [projectId], references: [id])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  title     String
+  message   String
+  type      String   // bid, message, payment, review, etc.
+  isRead    Boolean  @default(false)
+  data      Json?    // Additional data
+  createdAt DateTime @default(now())
+  
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model ApiToken {

@@ -5,7 +5,7 @@ export interface User {
   id: number;
   email: string;
   name: string;
-  role: "CLIENT" | "INTERN" | "ADMIN";
+  role: "CLIENT" | "FREELANCER" | "ADMIN";
   emailVerified: boolean;
 }
 
@@ -62,7 +62,7 @@ export function hasRole(user: AuthToken | null, requiredRole: string): boolean {
   const roleHierarchy = {
     ADMIN: 3,
     CLIENT: 2,
-    INTERN: 1,
+    FREELANCER: 1,
   };
 
   const userLevel = roleHierarchy[user.role as keyof typeof roleHierarchy] || 0;

@@ -8,7 +8,7 @@ interface User {
   id: number;
   name: string;
   email: string;
-  role: "CLIENT" | "INTERN" | "ADMIN";
+  role: "CLIENT" | "FREELANCER" | "ADMIN";
 }
 
 interface DashboardRedirectProps {
@@ -29,8 +29,8 @@ export function DashboardRedirect({
         case "CLIENT":
           router.push("/dashboard/client");
           break;
-        case "INTERN":
-          router.push("/dashboard/intern");
+        case "FREELANCER":
+          router.push("/dashboard/freelancer");
           break;
         case "ADMIN":
           router.push("/dashboard/admin");

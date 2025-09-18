@@ -6,9 +6,16 @@ const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
-    const { name, email, password } = await req.json();
+    const { name, email, password, role = "CLIENT" } = await req.json();
     if (!name || !email || !password) {
       return new Response(JSON.stringify({ error: "Missing fields" }), {
+        status: 400,
+      });
+    }
+
+    // Validate role
+    if (!["CLIENT", "FREELANCER", "ADMIN"].includes(role)) {
+      return new Response(JSON.stringify({ error: "Invalid role" }), {
         status: 400,
       });
     }
@@ -29,8 +36,25 @@ export async function POST(req: Request) {
 
     // Create user with verification token
     const user = await prisma.user.create({
-      data: { name, email, password: hashedPassword, verificationToken },
+      data: { 
+        name, 
+        email, 
+        password: hashedPassword, 
+        verificationToken,
+        role: role as "CLIENT" | "FREELANCER" | "ADMIN"
+      },
     });
+
+    // Create profile based on role
+    if (role === "CLIENT") {
+      await prisma.client.create({
+        data: { userId: user.id }
+      });
+    } else if (role === "FREELANCER") {
+      await prisma.freelancer.create({
+        data: { userId: user.id }
+      });
+    }
 
     // Send verification email
     const apiKey = process.env.RESEND_API_KEY;

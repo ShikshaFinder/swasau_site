@@ -41,7 +41,7 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/unauthorized", request.url));
     }
 
-    if (pathname.startsWith("/dashboard/intern") && user.role !== "INTERN") {
+    if (pathname.startsWith("/dashboard/freelancer") && user.role !== "FREELANCER") {
       return NextResponse.redirect(new URL("/unauthorized", request.url));
     }
   }

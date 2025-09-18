@@ -58,41 +58,60 @@ export async function GET(request: NextRequest) {
           client: {
             include: { user: { select: { name: true, email: true } } },
           },
-          assignments: {
-            include: { intern: { select: { name: true, skills: true } } },
+          bids: {
+            include: {
+              freelancer: {
+                select: {
+                  title: true,
+                  user: { select: { name: true } },
+                },
+              },
+            },
           },
-          _count: { select: { assignments: true } },
+          _count: { select: { bids: true } },
         },
         orderBy: { createdAt: "desc" },
       });
-    } else if (role === "INTERN") {
-      // Interns can only see projects they're assigned to
-      const intern = await prisma.intern.findUnique({
+    } else if (role === "FREELANCER") {
+      // Freelancers can see all public projects and their own bids
+      const freelancer = await prisma.freelancer.findUnique({
         where: { userId: parseInt(userId) },
       });
 
-      if (!intern) {
+      if (!freelancer) {
         return NextResponse.json(
-          { error: "Intern not found" },
+          { error: "Freelancer not found" },
           { status: 404 }
         );
       }
 
       projects = await prisma.project.findMany({
         where: {
-          assignments: {
-            some: { internId: intern.id },
-          },
+          OR: [
+            { isPublic: true },
+            {
+              bids: {
+                some: { freelancerId: freelancer.id },
+              },
+            },
+          ],
         },
         include: {
           client: {
             include: { user: { select: { name: true, email: true } } },
           },
-          assignments: {
-            where: { internId: intern.id },
-            include: { intern: { select: { name: true, skills: true } } },
+          bids: {
+            where: { freelancerId: freelancer.id },
+            include: {
+              freelancer: {
+                select: {
+                  title: true,
+                  user: { select: { name: true } },
+                },
+              },
+            },
           },
-          _count: { select: { assignments: true } },
+          _count: { select: { bids: true } },
         },
         orderBy: { createdAt: "desc" },
       });
@@ -103,10 +122,17 @@ export async function GET(request: NextRequest) {
           client: {
             include: { user: { select: { name: true, email: true } } },
           },
-          assignments: {
-            include: { intern: { select: { name: true, skills: true } } },
+          bids: {
+            include: {
+              freelancer: {
+                select: {
+                  title: true,
+                  user: { select: { name: true } },
+                },
+              },
+            },
           },
-          _count: { select: { assignments: true } },
+          _count: { select: { bids: true } },
         },
         orderBy: { createdAt: "desc" },
       });

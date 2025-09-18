@@ -60,6 +60,9 @@ interface ProjectFormData {
 }
 
 const categories = [
+  "EMBEDDED",
+  "ASIC",
+  "RND",
   "IOT",
   "AI",
   "WEBSITE",
@@ -68,6 +71,8 @@ const categories = [
   "BLOCKCHAIN",
   "CYBERSECURITY",
   "DATA_ANALYTICS",
+  "HARDWARE",
+  "FIRMWARE",
   "OTHER",
 ];
 

@@ -49,9 +49,24 @@ export async function GET(
         client: {
           include: { user: { select: { name: true, email: true } } },
         },
-        assignments: {
+        bids: {
           include: {
-            intern: { select: { name: true, skills: true, linkedin: true } },
+            freelancer: {
+              select: {
+                title: true,
+                hourlyRate: true,
+                averageRating: true,
+                user: { select: { name: true, email: true } },
+              },
+            },
+          },
+        },
+        freelancer: {
+          select: {
+            title: true,
+            hourlyRate: true,
+            averageRating: true,
+            user: { select: { name: true, email: true } },
           },
         },
       },
@@ -136,10 +151,17 @@ export async function PUT(
         client: {
           include: { user: { select: { name: true, email: true } } },
         },
-        assignments: {
-          include: { intern: { select: { name: true, skills: true } } },
+        bids: {
+          include: {
+            freelancer: {
+              select: {
+                title: true,
+                user: { select: { name: true } },
+              },
+            },
+          },
         },
-        _count: { select: { assignments: true } },
+        _count: { select: { bids: true } },
       },
     });
 

@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
             title: true,
             status: true,
             createdAt: true,
-            _count: { select: { assignments: true } },
+            _count: { select: { bids: true } },
           },
         },
         _count: { select: { projects: true } },
